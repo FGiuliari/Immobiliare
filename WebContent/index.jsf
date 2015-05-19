@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+  <title>Corsi di Studio Esistenti</title>
+</h:head>
+<h:body>
+<f:event listener="#{cs.handleEvent}" type="preRenderView" />
+  <h1>Corsi di Studio Esistenti:</h1>
+<h:form>
+  <div>Il massimo dei crediti dei corsi con sede a verona nel 2010/2011 sono :#{cs.max}</div>
+
+   <h:outputLink value="sedi.jsf">Lista sedi</h:outputLink>
+</h:form>
+  <h:form>
+    <h:dataTable value="#{cs.corsi}" var="c">
+      <h:column>
+        <f:facet name="header">Codice</f:facet>
+        #{c.codice}
+      </h:column>
+      <h:column>
+        <f:facet name="header">Nome</f:facet>
+        <h:commandLink
+          value="#{c.nomeCorsoStudi}"
+          action="#{cs.recuperaCorso( c.id )}"/>
+      </h:column>
+    </h:dataTable>
+  </h:form>
+</h:body>
+</html>

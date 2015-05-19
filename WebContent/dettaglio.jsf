@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+  >
+<h:head>
+  <title>Informazioni su un Corso di Studio</title>
+</h:head>
+
+
+<h:body>
+  <h1>#{cs.corso.nomeCorsoStudi}</h1>
+
+  <ul>
+    <li><b>Codice</b> #{cs.corso.codice}</li>
+    <li><b>Abbreviazione</b>: #{cs.corso.abbreviazione}</li>
+    <li><b>Durata anni</b>: "#{cs.corso.durataAnni}</li>
+    <li><b>Sede</b>: #{cs.corso.sede}</li>
+    <li><b>Facoltà</b>: #{cs.facolta}</li>
+    <li><b>Informativa</b>: <h:outputText value="#{cs.corso.informativa}" escape="false" /> </li>
+  </ul>
+
+  <h:outputLink value="index.jsf">Lista corsi di studio</h:outputLink>
+
+</h:body>
+</html>
