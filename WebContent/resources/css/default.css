@@ -603,3 +603,27 @@ ul.style4 .first
 	padding-top: 0px;
 	border-top: none;
 }
+
+#typeMenu 
+{
+		
+}
+
+.mpTypeButton 
+{
+	color: white;
+	background-color: #CC0000;
+	border-radius: 20px;
+	height: 200px;
+	width: 300px;
+}
+
+.clear 
+{
+	clear: both;
+}
+
+.mpTypeButtonText 
+{
+	line-height: 200px;
+}

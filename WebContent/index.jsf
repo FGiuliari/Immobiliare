@@ -12,8 +12,29 @@
   </ui:define>
 
   <ui:define name="content">
+	<div id='TypeMenu'>
+		<h:form>
+			<h:commandLink action="jupiter">
+				<div class="boxA mpTypeButton"> 
+					<div class="mpTypeButtonText"><h:outputText value="#{msgs.palazzina}" /></div>
+				</div>
+			</h:commandLink>
+			<h:commandLink action="mars">
+				<div class="boxB mpTypeButton">
+					<div class="mpTypeButtonText"><h:outputText value="#{msgs.vill_schiera}" /></div> 
+					
+				</div>
+			</h:commandLink>
+			<h:commandLink action="mercury">
+				<div class="boxC mpTypeButton"> 
+					<div class="mpTypeButtonText"><h:outputText value="#{msgs.vill_singola}" /></div>
+				</div>
+			</h:commandLink>
+		</h:form>
+	</div>
+	<div class="clear" />
+	<br/><br/><br/>
 	<h:outputText value="#{msgs.AgencyPresentation}" escape="false" />
-  	<p> prova </p>
   </ui:define>
 </ui:composition>
 </body>
