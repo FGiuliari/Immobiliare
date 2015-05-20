@@ -2,7 +2,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
 <head><title>IGNORED</title></head>
 <body>
@@ -14,20 +15,22 @@
   <ui:define name="content">
 	<div id='TypeMenu'>
 		<h:form>
+		<f:event listener="#{View.aggiornaListaVendita}" type="preRenderView" />
+		
 			<h:commandLink action="jupiter">
 				<div class="boxA mpTypeButton"> 
-					<div class="mpTypeButtonText"><h:outputText value="#{msgs.palazzina}" /></div>
+					<div class="mpTypeButtonText"><h:outputText value="#{msgs.palazzina} #{View.nApp}" /></div>
 				</div>
 			</h:commandLink>
 			<h:commandLink action="mars">
 				<div class="boxB mpTypeButton">
-					<div class="mpTypeButtonText"><h:outputText value="#{msgs.vill_schiera}" /></div> 
+					<div class="mpTypeButtonText"><h:outputText value="#{msgs.vill_schiera} #{View.nSch}" /></div> 
 					
 				</div>
 			</h:commandLink>
 			<h:commandLink action="mercury">
 				<div class="boxC mpTypeButton"> 
-					<div class="mpTypeButtonText"><h:outputText value="#{msgs.vill_singola}" /></div>
+					<div class="mpTypeButtonText"><h:outputText value="#{msgs.vill_singola} #{View.nSin}" /></div>
 				</div>
 			</h:commandLink>
 		</h:form>
