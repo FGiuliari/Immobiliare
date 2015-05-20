@@ -11,7 +11,7 @@
   </ui:define>
 
   <ui:define name="content" escape="false">
-    #{msgs.AgencyPresentation}
+    <p>#{msgs.AgencyPresentation}</p>
   </ui:define>
 </ui:composition>
 </body>
