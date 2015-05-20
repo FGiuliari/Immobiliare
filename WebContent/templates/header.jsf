@@ -5,14 +5,10 @@
 
 <head><title>IGNORED</title></head>
 <body>
-<ui:composition template="/templates/layout.jsf">
-  <ui:define name="windowTitle">
-    #{msgs.AgencyHome}
-  </ui:define>
-
-  <ui:define name="content" escape="false">
-    #{msgs.AgencyPresentation}
-  </ui:define>
+<ui:composition>
+  <div class="header">
+    #{msgs.planetariumHeading}
+  </div>
 </ui:composition>
 </body>
 </html>
