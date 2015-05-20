@@ -16,9 +16,34 @@
 			<div id="logo">
 				<h:form>
 					<h1>
-						<h:commandLink action="index" value="Cesif Pifesco" />
+						<h:commandLink action="index" value="#{msgs.AgencyName}" />
 					</h1>
 				</h:form>
+			</div>
+			<div id="login">
+			<h:panelGroup layout="block"
+				rendered="#{!View.loggedIn}">
+				<h:form>
+					<table>
+							<td>Username:</td>
+							<td><h:inputText value="#{View.username}" style="width:8em"/></td>
+							<td style="width: 1.5em;"></td>
+							<td>Password:</td>
+							<td><h:inputSecret value="#{View.password}"  style="width:8em"/></td>
+							<td><h:commandButton value="Login" action="#{View.login}"  /></td>
+					</table>
+				</h:form>
+			</h:panelGroup>
+			<h:panelGroup layout="block"
+				rendered="#{View.loggedIn}">
+				<h:form>
+					<table>
+							<td>Welcome,</td>
+							<td><h:outputText value="#{View.username}"  /></td>
+							<td><h:commandButton value="Logout" action="#{View.logout}" /></td>
+					</table>
+				</h:form>
+			</h:panelGroup>
 			</div>
 			<div id="menu">
 				<ui:insert name="menu">
