@@ -15,9 +15,8 @@
   <ui:define name="content">
 	<div id='TypeMenu'>
 		<h:form>
-		<!--  <f:event listener="#{View.aggiornaListaVendita}" type="preRenderView" />
-		-->
-			<h:commandLink action="jupiter" rendered="#{View.check}">
+		<!--  <f:event listener="#{View.aggiornaListaVendita}" type="preRenderView" /> -->
+			<h:commandLink action="jupiter">
 				<div class="boxA mpTypeButton"> 
 					<div class="mpTypeButtonText"><h:outputText value="#{msgs.palazzina} #{View.nApp}" /></div>
 				</div>

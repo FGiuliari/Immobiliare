@@ -604,6 +604,10 @@ ul.style4 .first
 	border-top: none;
 }
 
+/****************************************************************/
+/*                       home                                    /
+/****************************************************************/
+
 #typeMenu 
 {
 		
@@ -660,3 +664,26 @@ position: absolute;
 	color: #FFF;
 }
 
+.redButton 
+{
+	padding-bottom: 5px; padding-top: 5px;
+	padding-left: 10px; padding-right: 10px;
+	background-color: #CC0000;
+	border-radius: 5px;
+	text-decoration: none;
+	color: #FFF;	
+}
+
+.loginTextInput
+{
+	width: 120px;
+	height: 20px;
+	border-radius: 2px;
+	background-color: #FFF;
+	border: none;
+}
+
+.emptyRow
+{
+	width: 1.5em;
+}

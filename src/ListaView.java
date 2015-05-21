@@ -15,134 +15,133 @@ import java.util.List;
 @SessionScoped
 public class ListaView implements Serializable {
 
-  // === Properties ============================================================
+	// === Properties
+	// ============================================================
 
-  private DataSource ds;
-  private List<Vendita> listaVendita;
-  private List<Vendita> listaVenditaAppartamenti;
-  private List<Vendita> listaVenditaSingola;
-  private List<Vendita> listaVenditaSchiera;  
-  private int nApp,nSin,nSch;
-  private Vendita venditaSelezionata;
-  private String username;
-  private String password;
-  private boolean loggedIn;
+	private DataSource ds;
+	private List<Vendita> listaVendita;
+	private List<Vendita> listaVenditaAppartamenti;
+	private List<Vendita> listaVenditaSingola;
+	private List<Vendita> listaVenditaSchiera;
+	private int nApp, nSin, nSch;
+	private Vendita venditaSelezionata;
+	private String username;
+	private String password;
+	private boolean loggedIn;
 
+	// === Methods
+	// ===============================================================
 
-  // === Methods ===============================================================
-
-  public ListaView() {
-    this.listaVendita = null;
-    this.listaVenditaAppartamenti = null;
-    this.listaVenditaSingola = null;
-    this.listaVenditaSchiera = null;
-    this.venditaSelezionata = null;
-    username=null;
-    password=null;
-    loggedIn=false;
-  }
-
-  @PostConstruct
-  public void initialize() {
-    try {
-      this.ds = new DataSource();
-    } catch( ClassNotFoundException e ){
-      this.ds = null;
-    }
-    
-  }
-  
-  public boolean getCheck(){
-	  return false;
-  }
-  
-  public void aggiornaListaVendita(ComponentSystemEvent event){
-	    listaVendita = ds.getListaVendita();
-	    listaVenditaAppartamenti = new ArrayList<Vendita>();
-	    listaVenditaSchiera = new ArrayList<Vendita>();
-	    listaVenditaSingola = new ArrayList<Vendita>();
-	    for (Vendita ven:listaVendita){
-	    	if(ven.getTipo().equals("palazzina")){
-	    		listaVenditaAppartamenti.add(ven);
-	    	}
-	    	else{
-	    		if(ven.getTipo().equals("singola")){
-	    			listaVenditaSingola.add(ven);
-	    		}else{
-	    			listaVenditaSchiera.add(ven);
-	    		}
-	    	}
-	    }
-	    nApp=listaVenditaAppartamenti.size();
-	    nSin=listaVenditaSingola.size();
-	    nSch=listaVenditaSchiera.size();
+	public ListaView() {
+		this.listaVendita = null;
+		this.listaVenditaAppartamenti = null;
+		this.listaVenditaSingola = null;
+		this.listaVenditaSchiera = null;
+		this.venditaSelezionata = null;
+		username = null;
+		password = null;
+		loggedIn = false;
 	}
 
-  public void ListaImmobili(ComponentSystemEvent event){
-	    listaVendita = ds.getListaVendita();
+	@PostConstruct
+	public void initialize() {
+		try {
+			this.ds = new DataSource();
+		} catch (ClassNotFoundException e) {
+			this.ds = null;
+		}
+
 	}
-  public String login(){
-	  loggedIn=ds.login(username,password);
-	  	if(!loggedIn){
-	  		username=null;
-	  		password=null;
-	  	}
-	  	return "index";
-  }
-  public String logout(){
-	  	username=null;
-	  	password=null;
-	  	loggedIn=false;
-	  	return "index";
-  }
-  public List<Vendita> getListaVendita() {
-    return listaVendita;
-  }
-/*
-  public String recuperaImmobile( int id ){
-    if( this.ds != null ){
-      venditaSelezionata = ds.getVendita( id );
-    }
-    return "dettaglio";
-  }
-*/
 
-  public Vendita getVenditaSelezionata(){
-    return venditaSelezionata;
-  }
+	public boolean getCheck() {
+		return true;
+	}
 
-public int getnApp() {
-	return nApp;
-}
+	public void aggiornaListaVendita(ComponentSystemEvent event) {
+		listaVendita = ds.getListaVendita();
+		listaVenditaAppartamenti = new ArrayList<Vendita>();
+		listaVenditaSchiera = new ArrayList<Vendita>();
+		listaVenditaSingola = new ArrayList<Vendita>();
+		for (Vendita ven : listaVendita) {
+			if (ven.getTipo().equals("palazzina")) {
+				listaVenditaAppartamenti.add(ven);
+			} else {
+				if (ven.getTipo().equals("singola")) {
+					listaVenditaSingola.add(ven);
+				} else {
+					listaVenditaSchiera.add(ven);
+				}
+			}
+		}
+		nApp = listaVenditaAppartamenti.size();
+		nSin = listaVenditaSingola.size();
+		nSch = listaVenditaSchiera.size();
+	}
 
-public int getnSin() {
-	return nSin;
-}
+	public void ListaImmobili(ComponentSystemEvent event) {
+		listaVendita = ds.getListaVendita();
+	}
 
-public int getnSch() {
-	return nSch;
-}
+	public String login() {
+		loggedIn = ds.login(username, password);
+		if (!loggedIn) {
+			username = null;
+			password = null;
+		}
+		return "index";
+	}
 
-public String getUsername() {
-	return username;
-}
+	public String logout() {
+		username = null;
+		password = null;
+		loggedIn = false;
+		return "index";
+	}
 
-public void setUsername(String username) {
-	this.username = username;
-}
+	public List<Vendita> getListaVendita() {
+		return listaVendita;
+	}
 
-public String getPassword() {
-	return password;
-}
+	/*
+	 * public String recuperaImmobile( int id ){ if( this.ds != null ){
+	 * venditaSelezionata = ds.getVendita( id ); } return "dettaglio"; }
+	 */
 
-public void setPassword(String password) {
-	this.password = password;
-}
-  
-public boolean getLoggedIn(){
-	System.out.println("loggedIn:"+loggedIn);
-	return loggedIn;
-}
+	public Vendita getVenditaSelezionata() {
+		return venditaSelezionata;
+	}
 
- 
+	public int getnApp() {
+		return nApp;
+	}
+
+	public int getnSin() {
+		return nSin;
+	}
+
+	public int getnSch() {
+		return nSch;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean getLoggedIn() {
+		System.out.println("loggedIn:" + loggedIn);
+		return loggedIn;
+	}
+
 }
