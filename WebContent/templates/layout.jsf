@@ -53,8 +53,15 @@
 							<tr>
 								<td>Welcome,</td>
 								<td><h:outputText value="#{View.username}" /></td>
-								<td><h:commandButton value="#{msgs.logout}"
-										action="#{View.logout}" /></td>
+								<td class="emptyRow" />
+								<td>
+									<h:commandLink action="#{View.logout}"
+										style="text-decoration: none">
+										<div id="loginButton" class="redButton">
+											<h:outputText value="#{msgs.logout}" />
+										</div>
+									</h:commandLink>
+								</td>
 							</tr>
 						</table>
 					</h:form>

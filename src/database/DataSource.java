@@ -37,12 +37,12 @@ public class DataSource implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String user = "rex";
-	private String passwd = "artix";
+	private String user = "cgrmcjkiernsld";
+	private String passwd = "2kuEVzBdkZOKYiWg-p4p7wZNfR";
 
 	// URL per la connessione alla base di dati e' formato dai seguenti
 	// componenti: <protocollo>://<host del server>/<nome base di dati>.
-	private String url = "jdbc:postgresql://localhost:5432/basi";
+	private String url = "jdbc:postgresql://ec2-54-217-202-108.eu-west-1.compute.amazonaws.com:5432/d50obhvuof5kka?&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
 
 	// Driver da utilizzare per la connessione e l'esecuzione delle query.
 	private String driver = "org.postgresql.Driver";
@@ -82,7 +82,7 @@ public class DataSource implements Serializable {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Vendita> result = new ArrayList<Vendita>();
-		int c = 0;
+		int c = 1;
 
 		try {
 			// tentativo di connessione al database

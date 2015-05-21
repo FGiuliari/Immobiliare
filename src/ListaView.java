@@ -76,6 +76,7 @@ public class ListaView implements Serializable {
 		nApp = listaVenditaAppartamenti.size();
 		nSin = listaVenditaSingola.size();
 		nSch = listaVenditaSchiera.size();
+		System.out.println(nApp+" "+nSin+" "+nSch);
 	}
 
 	public void ListaImmobili(ComponentSystemEvent event) {
