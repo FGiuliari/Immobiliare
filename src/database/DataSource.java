@@ -119,6 +119,7 @@ public class DataSource implements Serializable {
 	private Vendita makeVenditaBean(ResultSet rs) throws SQLException {
 		Vendita bean = new Vendita(rs.getInt("id_tentata_vendita"),
 				rs.getString("classtype"), rs.getString("indirizzo"),
+				rs.getString("citta"),
 				rs.getInt("superficie"), rs.getInt("numero_vani"),
 				rs.getString("descrizione"), rs.getInt("superficie_giardino"),
 				rs.getInt("piano"), rs.getDate("data_inizio"),

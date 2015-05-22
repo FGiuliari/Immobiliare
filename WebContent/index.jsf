@@ -1,43 +1,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
-<head><title>IGNORED</title></head>
+<head>
+<title>IGNORED</title>
+</head>
 <body>
-<ui:composition template="/templates/layout.jsf">
-  <ui:define name="windowTitle">
+	<ui:composition template="/templates/layout.jsf">
+		<ui:define name="windowTitle">
     #{msgs.AgencyHome}
   </ui:define>
 
-  <ui:define name="content">
-	<div id='TypeMenu'>
-		<h:form>
-	  <f:event listener="#{View.aggiornaListaVendita}" type="preRenderView" />
-			<h:commandLink action="jupiter">
-				<div class="boxA mpTypeButton"> 
-					<div class="mpTypeButtonText"><h:outputText value="#{msgs.palazzina} #{View.nApp}" /></div>
-				</div>
-			</h:commandLink>
-			<h:commandLink action="mars">
-				<div class="boxB mpTypeButton">
-					<div class="mpTypeButtonText"><h:outputText value="#{msgs.vill_schiera} #{View.nSch}" /></div> 
-					
-				</div>
-			</h:commandLink>
-			<h:commandLink action="mercury">
-				<div class="boxC mpTypeButton"> 
-					<div class="mpTypeButtonText"><h:outputText value="#{msgs.vill_singola} #{View.nSin}" /></div>
-				</div>
-			</h:commandLink>
-		</h:form>
-	</div>
-	<div class="clear" />
-	<br/><br/><br/>
-	<h:outputText value="#{msgs.AgencyPresentation}" escape="false" />
-  </ui:define>
-</ui:composition>
+		<ui:define name="content">
+			<div id='TypeMenu'>
+				<h:form>
+					<f:event listener="#{View.aggiornaListaVendita}"
+						type="preRenderView" />
+
+					<h:commandLink action="#{View.TipoScelto(1)}">
+						<div class="boxA mpTypeButton">
+							<div class="mpTypeButtonText">
+								<h:outputText value="#{msgs.palazzina} #{View.nApp}" />
+							</div>
+						</div>
+					</h:commandLink>
+					<h:commandLink action="#{View.TipoScelto(2)}">
+						<div class="boxB mpTypeButton">
+							<div class="mpTypeButtonText">
+								<h:outputText value="#{msgs.vill_schiera} #{View.nSch}" />
+							</div>
+
+						</div>
+					</h:commandLink>
+					<h:commandLink action="#{View.TipoScelto(3)}">
+						<div class="boxC mpTypeButton">
+							<div class="mpTypeButtonText">
+								<h:outputText value="#{msgs.vill_singola} #{View.nSin}" />
+							</div>
+						</div>
+					</h:commandLink>
+				</h:form>
+			</div>
+			<div class="clear" />
+			<br />
+			<br />
+			<br />
+			<h:outputText value="#{msgs.AgencyPresentation}" escape="false" />
+		</ui:define>
+	</ui:composition>
 </body>
 </html>

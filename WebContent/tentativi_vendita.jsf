@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/layout.jsf">
+		<ui:define name="windowTitle">
+    #{msgs.jupiter}
+  </ui:define>
+
+		<ui:define name="content">
+			<h:form>
+			<div id="table_row">
+				<h:dataTable value="#{View.listaVendita}" var="V" rowClasses="table_row">
+					<div class="tableRowContainer">
+						<h:column>
+							<div class="table_entry">Codice: #{V.codice}</div>
+						</h:column>
+						<h:column>
+							<div class="table_entry">Indirizzo: #{V.indirizzo}</div>
+						</h:column>
+						<h:column>
+							<div class="table_entry">Citta: #{V.citta}</div>
+						</h:column>
+						<h:column>
+							<div class="table_entry">Superficie: #{V.superficie}</div>
+						</h:column>
+						<h:column>
+							<h:commandLink action="#{View.VenditaSelezionata(V.codice)}"
+								style="text-decoration: none">
+								<div id="loginButton" class="redButton">
+									<h:outputText value="#{msgs.view}" />
+								</div>
+							</h:commandLink>
+						</h:column>
+					</div>
+				</h:dataTable>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

@@ -28,6 +28,7 @@ public class ListaView implements Serializable {
 	private String username;
 	private String password;
 	private boolean loggedIn;
+	private int tipoScelto;
 
 	// === Methods
 	// ===============================================================
@@ -99,9 +100,9 @@ public class ListaView implements Serializable {
 		return "index";
 	}
 
-	public List<Vendita> getListaVendita() {
-		return listaVendita;
-	}
+	//public List<Vendita> getListaVendita() {
+	//	return listaVendita;
+	//}
 
 	/*
 	 * public String recuperaImmobile( int id ){ if( this.ds != null ){
@@ -144,5 +145,35 @@ public class ListaView implements Serializable {
 		System.out.println("loggedIn:" + loggedIn);
 		return loggedIn;
 	}
+	
+	public String TipoScelto(int i){
+		tipoScelto=i;
+		return "tentativi_vendita";
+			
+	}
+	
+	public int getTipoScelto(){
+		return tipoScelto;
+	}
 
+	public List<Vendita> getListaVendita(){
+		switch(tipoScelto){
+		case 1 : return listaVenditaAppartamenti;
+				
+		case 2 : return listaVenditaSchiera;
+				 
+		case 3 : return listaVenditaSingola;
+		
+		default: return listaVendita;	
+		}
+	}
+
+	public String VenditaSelezionata(int i) {
+		for(Vendita ven : listaVendita){
+			if (ven.getCodice()==i)
+					venditaSelezionata=ven;
+		};
+	
+		return "immobile";
+	}	
 }

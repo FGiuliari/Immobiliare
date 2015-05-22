@@ -1,20 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
-<head><title>IGNORED</title></head>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<title>IGNORED</title>
+</head>
 <body>
-<ui:composition template="/templates/layout.jsf">
-  <ui:define name="windowTitle">
+	<ui:composition template="/templates/layout.jsf">
+		<ui:define name="windowTitle">
     #{msgs.saturn}
   </ui:define>
 
-  <ui:define name="content">
-    <h:graphicImage url="resources/images/Saturn.gif"/>
-    <br /><br />
+		<ui:define name="content">
+			<h:graphicImage url="resources/images/Saturn.gif" />
+			<br />
+			<br />
     Saturn has rings made of ice and dust.
   </ui:define>
-</ui:composition>
+	</ui:composition>
 </body>
 </html>

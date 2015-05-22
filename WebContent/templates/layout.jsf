@@ -26,23 +26,19 @@
 						<table>
 							<tr>
 								<td>Username:</td>
-								<td>
-									<h:inputText class="loginTextInput" value="#{View.username}"/>
-								</td>
+								<td><h:inputText class="loginTextInput"
+										value="#{View.username}" /></td>
 								<td class="emptyRow" />
 								<td>Password:</td>
-								<td>
-									<h:inputSecret class="loginTextInput" value="#{View.password}" />
-								</td>
+								<td><h:inputSecret class="loginTextInput"
+										value="#{View.password}" /></td>
 								<td class="emptyRow" />
-								<td>
-									<h:commandLink action="#{View.login}"
+								<td><h:commandLink action="#{View.login}"
 										style="text-decoration: none">
 										<div id="loginButton" class="redButton">
 											<h:outputText value="#{msgs.login}" />
 										</div>
-									</h:commandLink>
-								</td>
+									</h:commandLink></td>
 							</tr>
 						</table>
 					</h:form>
@@ -54,14 +50,12 @@
 								<td>Welcome,</td>
 								<td><h:outputText value="#{View.username}" /></td>
 								<td class="emptyRow" />
-								<td>
-									<h:commandLink action="#{View.logout}"
+								<td><h:commandLink action="#{View.logout}"
 										style="text-decoration: none">
 										<div id="loginButton" class="redButton">
 											<h:outputText value="#{msgs.logout}" />
 										</div>
-									</h:commandLink>
-								</td>
+									</h:commandLink></td>
 							</tr>
 						</table>
 					</h:form>

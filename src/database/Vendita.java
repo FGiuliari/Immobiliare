@@ -7,6 +7,7 @@ public class Vendita {
 	private int codice; //Tentata_vendita.id
 	private String tipo;
 	private String indirizzo;
+	private String citta;
 	private int superficie;
 	private int numero_vani;
 	private String descrizione;
@@ -16,13 +17,14 @@ public class Vendita {
 	private Date dataFineVendita;
 	private int prezzoMinimo;
 
-	public Vendita(int codice, String tipo, String indirizzo, int superficie,
+	public Vendita(int codice, String tipo, String indirizzo,String citta, int superficie,
 			int numero_vani, String descrizione, int superficie_giardino,
 			int piano, Date dataInizioVendita, Date dataFineVendita,int prezzoMinimo) {
 		super();
 		this.codice = codice;
 		this.tipo = tipo;
 		this.indirizzo = indirizzo;
+		this.citta=citta;
 		this.superficie = superficie;
 		this.numero_vani = numero_vani;
 		this.descrizione = descrizione;
@@ -107,6 +109,52 @@ public class Vendita {
 	public int getCodice() {
 		return codice;
 	}
+
+
+	public String getCitta() {
+		return citta;
+	}
+
+
+	public void setCitta(String citta) {
+		this.citta = citta;
+	}
+
+
+	public Date getDataInizioVendita() {
+		return dataInizioVendita;
+	}
+
+
+	public void setDataInizioVendita(Date dataInizioVendita) {
+		this.dataInizioVendita = dataInizioVendita;
+	}
+
+
+	public Date getDataFineVendita() {
+		return dataFineVendita;
+	}
+
+
+	public void setDataFineVendita(Date dataFineVendita) {
+		this.dataFineVendita = dataFineVendita;
+	}
+
+
+	public int getPrezzoMinimo() {
+		return prezzoMinimo;
+	}
+
+
+	public void setPrezzoMinimo(int prezzoMinimo) {
+		this.prezzoMinimo = prezzoMinimo;
+	}
+
+
+	public void setCodice(int codice) {
+		this.codice = codice;
+	}
+	
 	
 		
 		
