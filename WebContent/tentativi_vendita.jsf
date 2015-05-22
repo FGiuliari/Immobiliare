@@ -17,32 +17,66 @@
 
 		<ui:define name="content">
 			<h:form>
-			<div id="table_row">
-				<h:dataTable value="#{View.listaVendita}" var="V" rowClasses="table_row">
-					<div class="tableRowContainer">
-						<h:column>
-							<div class="table_entry">Codice: #{V.codice}</div>
-						</h:column>
-						<h:column>
-							<div class="table_entry">Indirizzo: #{V.indirizzo}</div>
-						</h:column>
-						<h:column>
-							<div class="table_entry">Citta: #{V.citta}</div>
-						</h:column>
-						<h:column>
-							<div class="table_entry">Superficie: #{V.superficie}</div>
-						</h:column>
-						<h:column>
-							<h:commandLink action="#{View.VenditaSelezionata(V.codice)}"
-								style="text-decoration: none">
-								<div id="loginButton" class="redButton">
-									<h:outputText value="#{msgs.view}" />
-								</div>
-							</h:commandLink>
-						</h:column>
-					</div>
-				</h:dataTable>
+				<div class="table_row_head">
+					<div class="table_entry table_column_head">Codice</div>
+					<div class="table_entry table_column_head">Indirizzo</div>
+					<div class="table_entry table_column_head">Citta</div>
+					<div class="table_entry table_column_head">Superficie</div>
 				</div>
+				<ui:repeat value="#{View.listaVendita}" var="V">
+					<div class="table_row">
+						<table style="width: 100%; padding: 5px">
+							<tr>
+								<td>
+									<div class="table_entry">#{V.codice}</div>
+								</td>
+								<td>
+									<div class="table_entry">#{V.indirizzo}</div>
+								</td>
+								<td>
+									<div class="table_entry">#{V.citta}</div>
+								</td>
+								<td>
+									<div class="table_entry">#{V.superficie}</div>
+								</td>
+								<td><h:commandLink
+										action="#{View.VenditaSelezionata(V.codice)}"
+										style="text-decoration: none;">
+										<div id="loginButton" class="redButton">
+											<h:outputText value="#{msgs.view}" />
+										</div>
+									</h:commandLink></td>
+							</tr>
+						</table>
+					</div>
+				</ui:repeat>
+				<!-- 
+					<h:dataTable value="#{View.listaVendita}" var="V"
+						rowClasses="table_row">
+						<div class="tableRowContainer">
+							<h:column>
+								<div class="table_entry">Codice: #{V.codice}</div>
+							</h:column>
+							<h:column>
+								<div class="table_entry">Indirizzo: #{V.indirizzo}</div>
+							</h:column>
+							<h:column>
+								<div class="table_entry">Citta: #{V.citta}</div>
+							</h:column>
+							<h:column>
+								<div class="table_entry">Superficie: #{V.superficie}</div>
+							</h:column>
+							<h:column>
+								<h:commandLink action="#{View.VenditaSelezionata(V.codice)}"
+									style="text-decoration: none">
+									<div id="loginButton" class="redButton">
+										<h:outputText value="#{msgs.view}" />
+									</div>
+								</h:commandLink>
+							</h:column>
+						</div>
+					</h:dataTable>
+					 -->
 			</h:form>
 		</ui:define>
 	</ui:composition>

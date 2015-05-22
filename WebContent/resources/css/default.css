@@ -603,11 +603,6 @@ ul.style4 .first {
 	width: 1.5em;
 }
 
-
-#table_row td div { 
-	margin-bottom:50px;
-}
-
 .table_entry {
 	/*padding: 1em 1.5em;*/
 	text-decoration: none;
@@ -615,13 +610,32 @@ ul.style4 .first {
 	font-weight: 600;
 	width:200px;
 	color: #FFF;
+	margin-right: 15px;
 }
 
 .table_row {
-	background-color: yellow;
-	border-bottom: 1px black solid;
+	height: 50px;
+	background-color: #222;
+	border-color: #CC0000;
+	border-bottom: 2px solid #CC0000;	
 }
 
 .table_row td {
-	border: none;
+	text-align: left;
+}
+
+
+.table_row_head {
+	height: 20px;
+	border-bottom: 2px solid #CC0000;
+	position: relative;
+	padding: 5px;
+}
+
+.table_column_head {
+	float: left;
+	width: 200px;
+	text-align: left;
+	margin-right: 28px;
+	color: #222;
 }
