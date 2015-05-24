@@ -62,14 +62,14 @@ public class DataSource implements Serializable {
 	// -- definizione delle query
 	// ------------------------------------------------
 
-	// recupera le principali info su tutti i corsi di studi
-	private String ImmobiliInVendita = "SELECT id, Codice, Nome FROM corsostudi ORDER BY Nome";
-
 	// recupera tutte le informazioni di un particolare corso di studi
 	private String listaVendita = "SELECT * "
 			+ "FROM Immobile I join Tentata_vendita V on I.codice=V.immobile "
 			+ "WHERE V.data_fine>?";
 
+	// recupero il numero di offerte registrate fino a questo momento per questa vendita
+	private String countOffers = "";
+	
 	/**
 	 * Metodo per il recupero delle principali informazioni di tutti i corsi di
 	 * studi

@@ -185,20 +185,28 @@ ul.contact li a.icon-rss:before {
 ,
 {
 float
+
+
 :
- 
-left
-;
 
  
+
+left
+
+
+;
 margin-right
+
+
 :
+
  
+
 20
 px
+
+
 ;
-
-
 }
 .box4 {
 	float: right;
@@ -608,7 +616,7 @@ ul.style4 .first {
 	text-decoration: none;
 	font-size: 0.90em;
 	font-weight: 600;
-	width:200px;
+	width: 200px;
 	color: #FFF;
 	margin-right: 15px;
 }
@@ -617,13 +625,12 @@ ul.style4 .first {
 	height: 50px;
 	background-color: #222;
 	border-color: #CC0000;
-	border-bottom: 2px solid #CC0000;	
+	border-bottom: 2px solid #CC0000;
 }
 
 .table_row td {
 	text-align: left;
 }
-
 
 .table_row_head {
 	height: 20px;
@@ -638,4 +645,40 @@ ul.style4 .first {
 	text-align: left;
 	margin-right: 28px;
 	color: #222;
+}
+
+/****************************************************************/
+/*                       immobile                                /
+/****************************************************************/
+
+#immobile_table_details {
+	margin: auto;
+	width: 70%;
+    border-collapse: collapse; 
+}
+
+#immobile_table_details td {
+	padding: 10px;
+}
+
+#immobile_table_details tr {
+	border-bottom: 1px solid black;
+}
+
+.table_deatils_title_column {
+	width: 20%;
+	text-align: right;
+}
+
+.table_deatils_detail_column {
+	width: 80%;
+	text-align: left;
+}
+
+.table_deatils_header {
+	padding: 10px;
+}
+
+#new_offer {
+	margin-top: 80px;
 }
