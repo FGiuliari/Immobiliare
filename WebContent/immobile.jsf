@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/layout.jsf">
+		<ui:define name="windowTitle">
+  			Tipologia immobile
+  		</ui:define>
+
+		<ui:define name="content">
+			<table id="immobile_table_details">
+				<tr>
+					<th colspan="2" class="table_deatils_header">Dettagli abitazione</th>
+				</tr>
+				<tr>
+					<td class="table_deatils_title_column"><strong>Codice</strong></td>
+					<td class="table_deatils_detail_column">#{View.venditaSelezionata.codice}</td>
+				</tr>
+				<tr>
+					<td class="table_deatils_title_column"><strong>Indirizzo</strong></td>
+					<td class="table_deatils_detail_column">#{View.venditaSelezionata.indirizzo}</td>
+				</tr>
+				<tr>
+					<td class="table_deatils_title_column"><strong>Citta</strong></td>
+					<td class="table_deatils_detail_column">#{View.venditaSelezionata.citta}</td>
+				</tr>
+				<tr>
+					<td class="table_deatils_title_column"><strong>Superficie totale</strong></td>
+					<td class="table_deatils_detail_column">#{View.venditaSelezionata.superficie}</td>
+				</tr>
+				<tr>
+					<td class="table_deatils_title_column"><strong>Numero vani</strong></td>
+					<td class="table_deatils_detail_column">#{View.venditaSelezionata.numero_vani}</td>
+				</tr>
+				<tr>
+					<td class="table_deatils_title_column"><strong>Descrizione</strong></td>
+					<td class="table_deatils_detail_column">#{View.venditaSelezionata.descrizione}</td>
+				</tr>
+				<tr>
+					<td class="table_deatils_title_column"><strong>Numero offerte</strong></td>
+					<td class="table_deatils_detail_column"></td>
+				</tr>
+			</table>
+			
+			<div id="new_offer">
+				<h1>Nuova offerta</h1>
+			</div>
+			
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
