@@ -628,13 +628,28 @@ ul.style4 .first {
 	border-bottom: 2px solid #CC0000;
 }
 
+.table>div:first-child{
+	height: 50px;
+	background-color: #222;
+	border-color: #CC0000;
+	border-top: 2px solid #CC0000;
+	border-bottom: 2px solid #CC0000;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.table>div:last-child{
+	height: 50px;
+	background-color: #222;
+	border-color: #CC0000;
+	border-bottom: 2px solid #CC0000;
+	border-radius: 0px 0px 15px 15px;
+}
 .table_row td {
 	text-align: left;
 }
 
 .table_row_head {
 	height: 20px;
-	border-bottom: 2px solid #CC0000;
 	position: relative;
 	padding: 5px;
 }
@@ -651,31 +666,34 @@ ul.style4 .first {
 /*                       immobile                                /
 /****************************************************************/
 
-#immobile_table_details {
+.immobile_table_details {
 	margin: auto;
 	width: 70%;
     border-collapse: collapse; 
 }
 
-#immobile_table_details td {
+.immobile_table_details td {
 	padding: 10px;
+	color: white;
 }
 
-#immobile_table_details tr {
+.immobile_table_details tr {
 	border-bottom: 1px solid black;
+	background: #222222;
 }
 
-.table_deatils_title_column {
+#table_details_title_column {
 	width: 20%;
 	text-align: right;
+	color:#CC0000;
 }
 
-.table_deatils_detail_column {
+#table_details_detail_column {
 	width: 80%;
 	text-align: left;
 }
 
-.table_deatils_header {
+#table_details_header {
 	padding: 10px;
 }
 
