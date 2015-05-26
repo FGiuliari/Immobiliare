@@ -226,8 +226,8 @@ public class DataSource implements Serializable {
 				pstmt.setString(1, codFisc);
 				pstmt.setString(2, nome);
 				pstmt.setString(3, cognome);
-				pstmt.setString(5, citta);
-				pstmt.setString(4, numTelefono);
+				pstmt.setString(4, citta);
+				pstmt.setString(5, numTelefono);
 				pstmt.execute();
 			}
 			pstmt = con.prepareStatement(insertContatto);

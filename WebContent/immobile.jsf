@@ -94,7 +94,7 @@
 						</tr>
 					</table>
 					<h:commandLink action="#{ImmobileView.submitContatto()}">
-						<f:ajax render="result" />
+						<f:ajax execute="codFisc cognome nome numTelefono citta prezzoOfferto" render="result" />
 						<div id="new_offer_submit_button">
 							<h:outputText value="#{msgs.new_offer_submit}" />
 						</div>

@@ -46,6 +46,7 @@ public class ImmobileView {
 	}
 	
 	public void submitContatto() {
+		System.out.println("INSERT RESULT " + codFisc + cognome + nome + numTelefono + citta);
 		if (codFisc != null && cognome != null && nome != null && numTelefono != null && citta != null) {
 			float offerta = Float.parseFloat(prezzoOfferto);
 			this.insertResult = ds.newContattoAcquirente(this.getVenditaSelezionata().getCodice(), codFisc, cognome, nome, numTelefono, citta, offerta);
