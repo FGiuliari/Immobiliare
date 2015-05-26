@@ -8,23 +8,25 @@ import database.*;
 @SessionScoped
 public class ImmobileView {
 	private DataSource ds;
-	private Vendita venditaSelezionata;
 	
 	// Campi form
 	
+	private String codFisc;
 	private String cognome;
 	private String nome;
 	private String numTelefono;
+	private String citta;
 	private String prezzoOfferto;
+	
+	private boolean insertResult;
 	
 	public ImmobileView() {
 		ds = null;
-		venditaSelezionata = null;
+		insertResult = false;
 	}
 	
 	@PostConstruct
 	public void initialize() {
-		this.venditaSelezionata = StateTracker.getStateTracker().getCurrent_tentata_vendita();
 		try {
 			this.ds = new DataSource();
 		} catch (ClassNotFoundException e) {
@@ -34,17 +36,20 @@ public class ImmobileView {
 	
 	public int offerteVenditaSelezionata(){
 		int result = 0;
-		if (this.venditaSelezionata != null && ds != null)
-			result = ds.offerteRegistrate(this.venditaSelezionata.getCodice());
+		if (this.getVenditaSelezionata() != null && ds != null)
+			result = ds.offerteRegistrate(this.getVenditaSelezionata().getCodice());
 		return result;
 	}
 
-	public void setVenditaSelezionata(Vendita venditaSelezionata) {
-		this.venditaSelezionata = venditaSelezionata;
-	}
-
 	public Vendita getVenditaSelezionata() {
-		return venditaSelezionata;
+		return StateTracker.getStateTracker().getCurrent_tentata_vendita();
+	}
+	
+	public void submitContatto() {
+		if (codFisc != null && cognome != null && nome != null && numTelefono != null && citta != null) {
+			float offerta = Float.parseFloat(prezzoOfferto);
+			this.insertResult = ds.newContattoAcquirente(this.getVenditaSelezionata().getCodice(), codFisc, cognome, nome, numTelefono, citta, offerta);
+		}
 	}
 	
 	// GETTER - SETTER FORM
@@ -79,5 +84,27 @@ public class ImmobileView {
 
 	public void setPrezzoOfferto(String prezzoOfferto) {
 		this.prezzoOfferto = prezzoOfferto;
+	}
+
+	public String getCodFisc() {
+		return codFisc;
+	}
+
+	public String getCitta() {
+		return citta;
+	}
+
+	public void setCodFisc(String codFisc) {
+		this.codFisc = codFisc;
+	}
+
+	public void setCitta(String citta) {
+		this.citta = citta;
+	}
+	
+	public String insertResult() {
+		if (this.insertResult == true)
+			return "Query andata a buon fine";
+		return "";
 	}
 }

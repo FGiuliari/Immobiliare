@@ -195,7 +195,60 @@ public class DataSource implements Serializable {
 		return result;
 	}
 
-	public void newContattoAcquirente(String cognome,String nome, String numTelefono, float prezzoOfferta) {
+	private String insertAcquirente = "INSERT INTO Acquirente (cod_fisc, nome, cognome, citta, n_tel) "
+				+ "VALUES (?, ?, ?, ?, ?)";
+	private String existsAcquirente = "SELECT 1 FROM Acquirente WHERE cod_fisc = ?";
+	private String insertContatto = "INSERT INTO Contatto (tentata_vendita, acquirente, data, prezzo_offerta) VALUES (?, ?, ?, ?)";
+	
+	public boolean newContattoAcquirente(
+			int codice_tentata_vendita
+			, String codFisc
+			, String cognome
+			, String nome
+			, String numTelefono
+			, String citta
+			, float prezzoOfferta) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		boolean result = false;
+		
+		try {
+			con = DriverManager.getConnection(url, user, passwd);
+			
+			pstmt = con.prepareStatement(existsAcquirente);
+			pstmt.setString(1, codFisc);
+			rs = pstmt.executeQuery();
+			if (! rs.next()) {
+				pstmt = con.prepareStatement(insertAcquirente);
+				pstmt.setString(1, codFisc);
+				pstmt.setString(2, nome);
+				pstmt.setString(3, cognome);
+				pstmt.setString(5, citta);
+				pstmt.setString(4, numTelefono);
+				pstmt.execute();
+			}
+			pstmt = con.prepareStatement(insertContatto);
+			pstmt.setInt(1, codice_tentata_vendita);
+			pstmt.setString(2, codFisc);
+			pstmt.setDate(3, Date.valueOf(LocalDate.now()));
+			pstmt.setFloat(4, prezzoOfferta);
+			pstmt.execute();
+			
+			result = true;
+		} catch (SQLException sqle) { // catturo le eventuali eccezioni!
+			sqle.printStackTrace();
+		} finally { // alla fine chiudo la connessione.
+			try {
+				con.close();
+			} catch (SQLException sqle1) {
+				sqle1.printStackTrace();
+			}
+		}
+		
+		return result;
 		
 	}
 	

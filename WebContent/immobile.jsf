@@ -52,9 +52,15 @@
 			
 			<div id="new_offer">
 				<h:form>
-					<table class="immobile_table_details">
+					<table id="immobile_table_details" class="immobile_table_details">
 						<tr>
 							<th colspan="2" id="table_details_header">Nuova offerta</th>
+						</tr>
+						<tr>
+							<td id="table_details_title_column"><strong>Codice Fiscale</strong></td>
+							<td id="table_details_detail_column">
+								<h:inputText value="#{ImmobileView.codFisc}" id="codFisc"/>
+							</td>
 						</tr>
 						<tr>
 							<td id="table_details_title_column"><strong>Cognome</strong></td>
@@ -75,20 +81,28 @@
 							</td>
 						</tr>
 						<tr>
+							<td id="table_details_title_column"><strong>Citta</strong></td>
+							<td id="table_details_detail_column">
+								<h:inputText value="#{ImmobileView.citta}" id="citta"/>
+							</td>
+						</tr>
+						<tr>
 							<td id="table_details_title_column"><strong>Prezzo offerto</strong></td>
 							<td id="table_details_detail_column">
 								<h:inputText value="#{ImmobileView.prezzoOfferto}" id="prezzoOfferto"/>
 							</td>
 						</tr>
 					</table>
-					<h:commandLink action="#">
-						<f:ajax execute="cognome nome numTelefono prezzoOfferto" execute="immobile_table_details" />
-						
+					<h:commandLink action="#{ImmobileView.submitContatto()}">
+						<f:ajax render="result" />
 						<div id="new_offer_submit_button">
 							<h:outputText value="#{msgs.new_offer_submit}" />
 						</div>
 					</h:commandLink>
+					
+					<h:outputText id="result" value="#{ImmobileView.insertResult()}" />
 				</h:form>
+				
 			</div>
 			
 		</ui:define>
