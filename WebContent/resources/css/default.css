@@ -677,20 +677,21 @@ ul.style4 .first {
 	color: white;
 }
 
-.immobile_table_details tr {
+.immobile_table_details th {
 	border-bottom: 1px solid black;
-	background: #222222;
 }
 
 #table_details_title_column {
-	width: 20%;
+	width: 30%;
 	text-align: right;
 	color:#CC0000;
 }
 
 #table_details_detail_column {
-	width: 80%;
+	width: 70%;
 	text-align: left;
+	color: #222;
+	padding-left: 30px;
 }
 
 #table_details_header {
@@ -699,4 +700,17 @@ ul.style4 .first {
 
 #new_offer {
 	margin-top: 80px;
+}
+
+#new_offer_submit_button {
+	width: 200px;
+	height: 150px;
+	line-height: 150px;
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+	background-color: #CC0000;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 20px;
 }

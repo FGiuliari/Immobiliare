@@ -51,7 +51,6 @@ public class ListaView implements Serializable {
 		} catch (ClassNotFoundException e) {
 			this.ds = null;
 		}
-
 	}
 
 	public boolean getCheck() {
@@ -170,11 +169,12 @@ public class ListaView implements Serializable {
 
 	public String VenditaSelezionata(int i) {
 		for(Vendita ven : listaVendita){
-			if (ven.getCodice()==i)
-					venditaSelezionata=ven;
+			if (ven.getCodice()==i){
+				venditaSelezionata=ven;
+				StateTracker.getStateTracker().setCurrent_tentata_vendita(venditaSelezionata);
+			}
 		};
 	
 		return "immobile";
 	}
-	
 }

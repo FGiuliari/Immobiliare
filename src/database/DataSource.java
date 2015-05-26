@@ -66,9 +66,6 @@ public class DataSource implements Serializable {
 	private String listaVendita = "SELECT * "
 			+ "FROM Immobile I join Tentata_vendita V on I.codice=V.immobile "
 			+ "WHERE V.data_fine>?";
-
-	// recupero il numero di offerte registrate fino a questo momento per questa vendita
-	private String countOffers = "";
 	
 	/**
 	 * Metodo per il recupero delle principali informazioni di tutti i corsi di
@@ -127,16 +124,6 @@ public class DataSource implements Serializable {
 		return bean;
 	}
 
-	// recupera la/e facoltà di un particolare corso di studi
-	private String csf = "SELECT DISTINCT f.nome "
-			+ "FROM facolta f INNER JOIN corsoinfacolta csf "
-			+ "ON (f.id=csf.id_facolta) " + "WHERE csf.id_corsostudi=?";
-
-	//
-	private String sedi = "SELECT DISTINCT c.sede FROM CorsoStudi c";
-
-	private String max = "SELECT MAX(crediti) AS max FROM CorsoStudi C, InsErogato IE WHERE C.id=IE.id_corsostudi AND C.sede='Verona' AND IE.annoaccademico='2010/2011'";
-
 	private String login = "SELECT 0 " + "FROM Cliente C "
 			+ "WHERE login LIKE ? AND password LIKE ?";
 
@@ -145,7 +132,6 @@ public class DataSource implements Serializable {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int c = 0;
 		boolean logged = false;
 
 		try {
@@ -179,7 +165,40 @@ public class DataSource implements Serializable {
 		}
 		return logged;
 	}
+	
+	// recupero il numero di offerte registrate fino a questo momento per questa vendita
+	private String countOffers = "SELECT count(*) FROM contatto WHERE tentata_vendita = ?";
+	
+	public int offerteRegistrate(int codice_tentata_vendita){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			con = DriverManager.getConnection(url, user, passwd);
+			pstmt = con.prepareStatement(countOffers);
+			pstmt.setInt(1, codice_tentata_vendita);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) result = rs.getInt(0);
+		} catch (SQLException sqle) { // catturo le eventuali eccezioni!
+			sqle.printStackTrace();
+		} finally { // alla fine chiudo la connessione.
+			try {
+				con.close();
+			} catch (SQLException sqle1) {
+				sqle1.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
 
+	public void newContattoAcquirente(String cognome,String nome, String numTelefono, float prezzoOfferta) {
+		
+	}
+	
 	// === Methods
 	// ===============================================================
 
