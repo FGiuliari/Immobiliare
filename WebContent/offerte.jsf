@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/layout.jsf">
+		<ui:define name="windowTitle">
+    #{msgs.jupiter}
+  </ui:define>
+
+		<ui:define name="content">
+		<h:form>
+					<f:event listener="#{View.aggiornaListaVenditaUser}"
+						type="preRenderView" />
+		</h:form>
+			<h:form>
+				<div class="table_row_head">
+					<div class="table_entry_user table_column_head">Codice</div>
+					<div class="table_entry_user table_column_head">Indirizzo</div>
+					<div class="table_entry_user table_column_head">Citta</div>
+					<div class="table_entry_user table_column_head">Superficie</div>
+					<div class="table_entry_user table_column_head">Offerte</div>
+					
+				</div>
+				<div class="table">
+				<ui:repeat value="#{View.listaVenditaUser}" var="V">
+					<div class="table_row">
+						<table style="width: 100%; padding: 5px">
+							<tr>
+								<td>
+									<div class="table_entry_user">#{V.codice}</div>
+								</td>
+								<td>
+									<div class="table_entry_user">#{V.indirizzo}</div>
+								</td>
+								<td>
+									<div class="table_entry_user">#{V.citta}</div>
+								</td>
+								<td>
+									<div class="table_entry_user">#{V.superficie}</div>
+								</td>
+								<td>
+									<div class="table_entry_user">#{V.numOfferte}</div>
+								</td>
+								<td><h:commandLink
+										action="#{View.VenditaSelezionata(V.codice)}"
+										style="text-decoration: none;">
+										<div id="loginButton" class="redButton">
+											<h:outputText value="#{msgs.view}" />
+										</div>
+									</h:commandLink></td>
+							</tr>
+						</table>
+					</div>
+				</ui:repeat>
+				</div>
+				<!-- 
+					<h:dataTable value="#{View.listaVendita}" var="V"
+						rowClasses="table_row">
+						<div class="tableRowContainer">
+							<h:column>
+								<div class="table_entry">Codice: #{V.codice}</div>
+							</h:column>
+							<h:column>
+								<div class="table_entry">Indirizzo: #{V.indirizzo}</div>
+							</h:column>
+							<h:column>
+								<div class="table_entry">Citta: #{V.citta}</div>
+							</h:column>
+							<h:column>
+								<div class="table_entry">Superficie: #{V.superficie}</div>
+							</h:column>
+							<h:column>
+								<h:commandLink action="#{View.VenditaSelezionata(V.codice)}"
+									style="text-decoration: none">
+									<div id="loginButton" class="redButton">
+										<h:outputText value="#{msgs.view}" />
+									</div>
+								</h:commandLink>
+							</h:column>
+						</div>
+					</h:dataTable>
+					 -->
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

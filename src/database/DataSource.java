@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import user.*;
 
 /**
  * Questa classe mette a disposizione i metodi per effettuare interrogazioni
@@ -124,7 +125,7 @@ public class DataSource implements Serializable {
 		return bean;
 	}
 
-	private String login = "SELECT 0 " + "FROM Cliente C "
+	private String login = "SELECT cod_fisc " + "FROM Cliente C "
 			+ "WHERE login LIKE ? AND password LIKE ?";
 
 	public boolean login(String user1, String psw1) { // dichiarazione delle
@@ -133,6 +134,7 @@ public class DataSource implements Serializable {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean logged = false;
+		String cod_fisc=null;
 
 		try {
 			// tentativo di connessione al database
@@ -152,6 +154,7 @@ public class DataSource implements Serializable {
 			while (rs.next()) {
 				System.out.println("esiste un utente");
 				logged = true;
+				StateTracker.getStateTracker().setUser(rs.getString(1));				
 			}
 
 		} catch (SQLException sqle) { // catturo le eventuali eccezioni!
@@ -181,7 +184,7 @@ public class DataSource implements Serializable {
 			pstmt.setInt(1, codice_tentata_vendita);
 			rs = pstmt.executeQuery();
 			
-			if (rs.next()) result = rs.getInt(0);
+			if (rs.next()) result = rs.getInt(1);
 		} catch (SQLException sqle) { // catturo le eventuali eccezioni!
 			sqle.printStackTrace();
 		} finally { // alla fine chiudo la connessione.
@@ -250,6 +253,67 @@ public class DataSource implements Serializable {
 		
 		return result;
 		
+	}
+	
+	
+//	private String listaVenditaUser = "SELECT * "
+//			+ "FROM Immobile I join Tentata_vendita V on I.codice=V.immobile join numofferte N on V.id_tentata_vendita=N.noffert "
+//			+ "WHERE V.data_fine>? and V.cliente LIKE ?";
+	
+	private String listaVenditaUser ="SELECT * FROM Immobile I join Tentata_vendita V on I.codice=V.immobile left join numofferte N on V.id_tentata_vendita=N.tentata_vendita WHERE V.data_fine>? and V.cliente LIKE ?";
+	
+	
+	public List<Vendita> getListaVenditaUser() {
+		// dichiarazione delle variabili
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Vendita> result = new ArrayList<Vendita>();
+		int c = 1;
+
+		try {
+			// tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			System.out.println("connesso");
+			// connessione riuscita, ottengo l'oggetto per l'esecuzione
+			// dell'interrogazione.
+			pstmt = con.prepareStatement(listaVenditaUser);
+			pstmt.clearParameters();
+			// imposto i parametri della query
+			pstmt.setDate(1, Date.valueOf(LocalDate.now()));
+			pstmt.setString(2, StateTracker.getStateTracker().getUser());
+			// eseguo la query
+			rs = pstmt.executeQuery();
+			// eseguo l'interrogazione desiderata
+			// memorizzo il risultato dell'interrogazione nel Vector
+			System.out.println("query user "+StateTracker.getStateTracker().getUser());
+			while (rs.next()) {
+				result.add(makeVenditaUserBean(rs));
+				System.out.println(c+++"case in vendita");
+			}
+
+		} catch (SQLException sqle) { // catturo le eventuali eccezioni!
+			sqle.printStackTrace();
+
+		} finally { // alla fine chiudo la connessione.
+			try {
+				con.close();
+			} catch (SQLException sqle1) {
+				sqle1.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	private Vendita makeVenditaUserBean(ResultSet rs) throws SQLException {
+		Vendita bean = new Vendita(rs.getInt("id_tentata_vendita"),
+				rs.getString("classtype"), rs.getString("indirizzo"),
+				rs.getString("citta"),
+				rs.getInt("superficie"), rs.getInt("numero_vani"),
+				rs.getString("descrizione"), rs.getInt("superficie_giardino"),
+				rs.getInt("piano"), rs.getDate("data_inizio"),
+				rs.getDate("data_fine"), rs.getInt("prezzo_minimo"),rs.getInt("noffert"));
+		return bean;
 	}
 	
 	// === Methods

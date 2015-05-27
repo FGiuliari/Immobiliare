@@ -16,6 +16,15 @@ public class Vendita {
 	private Date dataInizioVendita;
 	private Date dataFineVendita;
 	private int prezzoMinimo;
+	private int numOfferte;
+
+	public int getNumOfferte() {
+		return numOfferte;
+	}
+
+	public void setNumOfferte(int numOfferte) {
+		this.numOfferte = numOfferte;
+	}
 
 	public Vendita(int codice, String tipo, String indirizzo,String citta, int superficie,
 			int numero_vani, String descrizione, int superficie_giardino,
@@ -34,8 +43,28 @@ public class Vendita {
 		this.dataFineVendita = dataFineVendita;
 		this.prezzoMinimo = prezzoMinimo;
 	}
+	
+	public Vendita(int codice, String tipo, String indirizzo,String citta, int superficie,
+			int numero_vani, String descrizione, int superficie_giardino,
+			int piano, Date dataInizioVendita, Date dataFineVendita,int prezzoMinimo,int numOfferte) {
+		super();
+		this.codice = codice;
+		this.tipo = tipo;
+		this.indirizzo = indirizzo;
+		this.citta=citta;
+		this.superficie = superficie;
+		this.numero_vani = numero_vani;
+		this.descrizione = descrizione;
+		this.superficie_giardino = superficie_giardino;
+		this.piano = piano;
+		this.dataInizioVendita = dataInizioVendita;
+		this.dataFineVendita = dataFineVendita;
+		this.prezzoMinimo = prezzoMinimo;
+		this.numOfferte=numOfferte;
+	}
 
 
+	
 	public String getTipo() {
 		return tipo;
 	}

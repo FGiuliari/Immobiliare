@@ -1,11 +1,13 @@
+package user;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.event.ComponentSystemEvent;
 
 import database.*;
 
-@ManagedBean(name = "ImmobileView")
-@SessionScoped
+@ManagedBean(name = "ImmobileView", eager = true)
+@ViewScoped
 public class ImmobileView {
 	private DataSource ds;
 	
@@ -17,6 +19,7 @@ public class ImmobileView {
 	private String numTelefono;
 	private String citta;
 	private String prezzoOfferto;
+	private Vendita currentVendita;
 	
 	private boolean insertResult;
 	
@@ -27,22 +30,24 @@ public class ImmobileView {
 	
 	@PostConstruct
 	public void initialize() {
+		currentVendita=StateTracker.getStateTracker().getCurrent_tentata_vendita();
+
 		try {
 			this.ds = new DataSource();
 		} catch (ClassNotFoundException e) {
 			this.ds = null;
 		}
 	}
-	
+		
 	public int offerteVenditaSelezionata(){
 		int result = 0;
 		if (this.getVenditaSelezionata() != null && ds != null)
-			result = ds.offerteRegistrate(this.getVenditaSelezionata().getCodice());
+			result = ds.offerteRegistrate(currentVendita.getCodice());
 		return result;
 	}
 
 	public Vendita getVenditaSelezionata() {
-		return StateTracker.getStateTracker().getCurrent_tentata_vendita();
+		return currentVendita;
 	}
 	
 	public void submitContatto() {
@@ -106,6 +111,6 @@ public class ImmobileView {
 	public String insertResult() {
 		if (this.insertResult == true)
 			return "Query andata a buon fine";
-		return "";
+		return "Query fallita";
 	}
 }

@@ -11,14 +11,8 @@
 	<ui:composition>
 		<h:form>
 			<ul>
-				<li><h:commandLink action="mercury" value="Mercury" /></li>
-				<li><h:commandLink action="venus" value="Venus" /></li>
-				<li><h:commandLink action="earth" value="Earth" /></li>
-				<li><h:commandLink action="mars" value="Mars" /></li>
-				<li><h:commandLink action="jupiter" value="Jupiter" /></li>
-				<li><h:commandLink action="saturn" value="Saturn" /></li>
-				<li><h:commandLink action="uranus" value="Uranus" /></li>
-				<li><h:commandLink action="neptune" value="Neptune" /></li>
+				<li><h:commandLink action="offerte" value="Vedi offerte" /></li>
+				
 			</ul>
 		</h:form>
 	</ui:composition>

@@ -1,3 +1,4 @@
+package user;
 import database.DataSource;
 import database.Vendita;
 
@@ -20,6 +21,7 @@ public class ListaView implements Serializable {
 
 	private DataSource ds;
 	private List<Vendita> listaVendita;
+	private List<Vendita> listaVenditaUser;
 	private List<Vendita> listaVenditaAppartamenti;
 	private List<Vendita> listaVenditaSingola;
 	private List<Vendita> listaVenditaSchiera;
@@ -79,6 +81,10 @@ public class ListaView implements Serializable {
 		System.out.println(nApp+" "+nSin+" "+nSch);
 	}
 
+	public void aggiornaListaVenditaUser(ComponentSystemEvent event) {
+		listaVenditaUser = ds.getListaVenditaUser();
+		
+	}
 	public void ListaImmobili(ComponentSystemEvent event) {
 		listaVendita = ds.getListaVendita();
 	}
@@ -165,6 +171,10 @@ public class ListaView implements Serializable {
 		
 		default: return listaVendita;	
 		}
+	}
+	
+	public List<Vendita> getListaVenditaUser(){
+		return listaVenditaUser;
 	}
 
 	public String VenditaSelezionata(int i) {

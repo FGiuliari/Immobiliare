@@ -417,6 +417,15 @@ ul.style4 .first {
     text-decoration: none;
     width: 200px;
 }
+
+.table_entry_user{
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-right: 15px;
+    text-decoration: none;
+    width: 150px;
+}
 .table_row {
     background-color: #444;
     border-bottom: 2px solid #eaeaea;
