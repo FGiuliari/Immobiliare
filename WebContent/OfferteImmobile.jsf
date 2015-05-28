@@ -63,7 +63,7 @@
 			</table>
 			<div class="offerte">Offerte</div>
 
-			<h:form class="table_offerte">
+			<h:form id="table_offerte">
 				<div class="table_row_head">
 					<div class="table_entry_offerte table_column_head_offerte">Nome</div>
 					<div class="table_entry_offerte table_column_head_offerte">Cognome</div>

@@ -9,7 +9,6 @@ import javax.faces.event.ComponentSystemEvent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @ManagedBean(name = "View")
@@ -19,6 +18,10 @@ public class ListaView implements Serializable {
 	// === Properties
 	// ============================================================
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private DataSource ds;
 	private List<Vendita> listaVendita;
 	private List<Vendita> listaVenditaUser;

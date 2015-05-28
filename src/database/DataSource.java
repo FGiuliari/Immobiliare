@@ -75,12 +75,12 @@ public class DataSource implements Serializable {
 	 * @return
 	 */
 	public List<Vendita> getListaVendita() {
+		
 		// dichiarazione delle variabili
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Vendita> result = new ArrayList<Vendita>();
-		int c = 1;
 
 		try {
 			// tentativo di connessione al database
@@ -98,7 +98,6 @@ public class DataSource implements Serializable {
 			// memorizzo il risultato dell'interrogazione nel Vector
 			while (rs.next()) {
 				result.add(makeVenditaBean(rs));
-				System.out.println(c++);
 			}
 
 		} catch (SQLException sqle) { // catturo le eventuali eccezioni!
@@ -134,7 +133,6 @@ public class DataSource implements Serializable {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean logged = false;
-		String cod_fisc=null;
 
 		try {
 			// tentativo di connessione al database
@@ -326,7 +324,6 @@ public class DataSource implements Serializable {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Offerta> result = new ArrayList<Offerta>();
-		int c = 1;
 
 		try {
 			// tentativo di connessione al database

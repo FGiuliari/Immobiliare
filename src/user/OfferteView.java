@@ -5,10 +5,7 @@ import database.*;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.event.ComponentSystemEvent;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
