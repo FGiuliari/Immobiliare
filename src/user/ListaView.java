@@ -177,14 +177,16 @@ public class ListaView implements Serializable {
 		return listaVenditaUser;
 	}
 
-	public String VenditaSelezionata(int i) {
+	public String VenditaSelezionata(int i,boolean user) {
 		for(Vendita ven : listaVendita){
 			if (ven.getCodice()==i){
 				venditaSelezionata=ven;
 				StateTracker.getStateTracker().setCurrent_tentata_vendita(venditaSelezionata);
 			}
 		};
-	
+	if(!user)
 		return "immobile";
+	else
+		return "OfferteImmobile";
 	}
 }

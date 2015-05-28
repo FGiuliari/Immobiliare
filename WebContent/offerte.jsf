@@ -50,7 +50,7 @@
 									<div class="table_entry_user">#{V.numOfferte}</div>
 								</td>
 								<td><h:commandLink
-										action="#{View.VenditaSelezionata(V.codice)}"
+										action="#{View.VenditaSelezionata(V.codice,true)}"
 										style="text-decoration: none;">
 										<div id="loginButton" class="redButton">
 											<h:outputText value="#{msgs.view}" />

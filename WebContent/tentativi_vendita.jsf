@@ -41,7 +41,7 @@
 									<div class="table_entry">#{V.superficie}</div>
 								</td>
 								<td><h:commandLink
-										action="#{View.VenditaSelezionata(V.codice)}"
+										action="#{View.VenditaSelezionata(V.codice,false)}"
 										style="text-decoration: none;">
 										<div id="loginButton" class="redButton">
 											<h:outputText value="#{msgs.view}" />
