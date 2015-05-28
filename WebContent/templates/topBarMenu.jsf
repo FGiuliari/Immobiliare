@@ -11,7 +11,7 @@
 	<ui:composition>
 		<h:form>
 			<ul>
-				<li><h:commandLink action="offerte" value="Vedi offerte" /></li>
+				<li><h:commandLink action="offerte" value="Vedi offerte" rendered="#{User.loggedIn}"/></li>
 				
 			</ul>
 		</h:form>

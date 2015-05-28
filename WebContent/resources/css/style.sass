@@ -379,6 +379,10 @@ ul
   @extend .table_entry
   width: 150px
 
+.table_entry_offerte
+  @extend .table_entry
+  width: 120px
+
 .table_row
   background-color: #444
   border-bottom: 2px solid $background
@@ -406,10 +410,20 @@ ul
   margin-right: 27px
   text-align: center
 
+.table_column_head_user
+	@extend .table_column_head
+	margin-right: 31px 
+
+.table_column_head_offerte
+	@extend .table_column_head
+	margin-right: 44px
+
+
 .immobile_table_details
   border-collapse: collapse
   margin: auto
   width: 70%
+  margin-bottom: 40px
   td
     color: white
     padding: 10px
@@ -443,3 +457,13 @@ ul
   text-align: center
   vertical-align: middle
   width: 200px
+  
+.table_offerte
+	padding-top: 20px
+
+.offerte
+  border-bottom: 1px solid black
+  color: $maincolor
+  font-size: 2.5em
+  font-weight: 600
+  padding: 20px

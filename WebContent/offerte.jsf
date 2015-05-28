@@ -22,11 +22,11 @@
 		</h:form>
 			<h:form>
 				<div class="table_row_head">
-					<div class="table_entry_user table_column_head">Codice</div>
-					<div class="table_entry_user table_column_head">Indirizzo</div>
-					<div class="table_entry_user table_column_head">Citta</div>
-					<div class="table_entry_user table_column_head">Superficie</div>
-					<div class="table_entry_user table_column_head">Offerte</div>
+					<div class="table_entry_user table_column_head_user">Codice</div>
+					<div class="table_entry_user table_column_head_user">Indirizzo</div>
+					<div class="table_entry_user table_column_head_user">Citta</div>
+					<div class="table_entry_user table_column_head_user">Superficie</div>
+					<div class="table_entry_user table_column_head_user">Offerte</div>
 					
 				</div>
 				<div class="table">

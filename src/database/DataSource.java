@@ -154,7 +154,7 @@ public class DataSource implements Serializable {
 			while (rs.next()) {
 				System.out.println("esiste un utente");
 				logged = true;
-				StateTracker.getStateTracker().setUser(rs.getString(1));				
+				StateTracker.getStateTracker().getUser().setCodFisc(rs.getString(1));				
 			}
 
 		} catch (SQLException sqle) { // catturo le eventuali eccezioni!
@@ -281,7 +281,7 @@ public class DataSource implements Serializable {
 			pstmt.clearParameters();
 			// imposto i parametri della query
 			pstmt.setDate(1, Date.valueOf(LocalDate.now()));
-			pstmt.setString(2, StateTracker.getStateTracker().getUser());
+			pstmt.setString(2, StateTracker.getStateTracker().getUser().getCodFisc());
 			// eseguo la query
 			rs = pstmt.executeQuery();
 			// eseguo l'interrogazione desiderata
@@ -313,6 +313,56 @@ public class DataSource implements Serializable {
 				rs.getString("descrizione"), rs.getInt("superficie_giardino"),
 				rs.getInt("piano"), rs.getDate("data_inizio"),
 				rs.getDate("data_fine"), rs.getInt("prezzo_minimo"),rs.getInt("noffert"));
+		return bean;
+	}
+	
+	
+	private String listaOfferte ="SELECT * FROM contatto c join acquirente a on c.acquirente=a.cod_fisc WHERE c.tentata_vendita=? order by data desc";
+
+
+	public List<Offerta> getListaOfferte(int codice) {
+		// dichiarazione delle variabili
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Offerta> result = new ArrayList<Offerta>();
+		int c = 1;
+
+		try {
+			// tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			System.out.println("connesso");
+			// connessione riuscita, ottengo l'oggetto per l'esecuzione
+			// dell'interrogazione.
+			pstmt = con.prepareStatement(listaOfferte);
+			pstmt.clearParameters();
+			// imposto i parametri della query
+			pstmt.setInt(1,codice);
+			// eseguo la query
+			rs = pstmt.executeQuery();
+			// eseguo l'interrogazione desiderata
+			// memorizzo il risultato dell'interrogazione nel Vector
+			while (rs.next()) {
+				result.add(makeOffertaBean(rs));
+			}
+
+		} catch (SQLException sqle) { // catturo le eventuali eccezioni!
+			sqle.printStackTrace();
+
+		} finally { // alla fine chiudo la connessione.
+			try {
+				con.close();
+			} catch (SQLException sqle1) {
+				sqle1.printStackTrace();
+			}
+		}
+		return result;
+		}
+	
+	
+	
+	private Offerta makeOffertaBean(ResultSet rs) throws SQLException {
+		Offerta bean = new Offerta(rs.getInt("tentata_vendita"),rs.getString("nome"),rs.getString("cognome"),rs.getString("n_tel"),rs.getString("citta"),rs.getDouble("prezzo_offerta"),rs.getDate("data"));
 		return bean;
 	}
 	

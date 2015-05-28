@@ -21,19 +21,19 @@
 				</h:form>
 			</div>
 			<div id="login">
-				<h:panelGroup layout="block" rendered="#{!View.loggedIn}">
+				<h:panelGroup layout="block" rendered="#{!User.loggedIn}">
 					<h:form>
 						<table>
 							<tr>
 								<td>Username:</td>
 								<td><h:inputText class="loginTextInput"
-										value="#{View.username}" /></td>
+										value="#{User.username}" /></td>
 								<td class="emptyRow" />
 								<td>Password:</td>
 								<td><h:inputSecret class="loginTextInput"
-										value="#{View.password}" /></td>
+										value="#{User.password}" /></td>
 								<td class="emptyRow" />
-								<td><h:commandLink action="#{View.login}"
+								<td><h:commandLink action="#{User.login}"
 										style="text-decoration: none">
 										<div id="loginButton" class="redButton">
 											<h:outputText value="#{msgs.login}" />
@@ -43,14 +43,14 @@
 						</table>
 					</h:form>
 				</h:panelGroup>
-				<h:panelGroup layout="block" rendered="#{View.loggedIn}">
+				<h:panelGroup layout="block" rendered="#{User.loggedIn}">
 					<h:form>
 						<table>
 							<tr>
 								<td>Welcome,</td>
-								<td><h:outputText value="#{View.username}" /></td>
+								<td><h:outputText value="#{User.username}" /></td>
 								<td class="emptyRow" />
-								<td><h:commandLink action="#{View.logout}"
+								<td><h:commandLink action="#{User.logout}"
 										style="text-decoration: none">
 										<div id="loginButton" class="redButton">
 											<h:outputText value="#{msgs.logout}" />

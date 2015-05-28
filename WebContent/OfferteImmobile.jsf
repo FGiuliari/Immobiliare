@@ -10,15 +10,15 @@
 <title>IGNORED</title>
 </head>
 <body>
-	
+
 	<ui:composition template="/templates/layout.jsf">
-	
+
 		<ui:define name="windowTitle">
   			Tipologia immobile
   		</ui:define>
 
 		<ui:define name="content">
-		
+
 			<table class="immobile_table_details">
 				<tr>
 					<th colspan="2" id="table_details_header">Dettagli abitazione</th>
@@ -29,7 +29,8 @@
 				</tr>
 				<tr>
 					<td id="table_details_title_column"><strong>Indirizzo</strong></td>
-					<td id="table_details_detail_column">#{ImmobileView.venditaSelezionata.indirizzo} euro</td>
+					<td id="table_details_detail_column">#{ImmobileView.venditaSelezionata.indirizzo}
+						euro</td>
 				</tr>
 				<tr>
 					<td id="table_details_title_column"><strong>Citta</strong></td>
@@ -50,7 +51,8 @@
 					<td id="table_details_detail_column">#{ImmobileView.venditaSelezionata.descrizione}</td>
 				</tr>
 				<tr>
-					<td id="table_details_title_column"><strong>Prezzo Minimo</strong></td>
+					<td id="table_details_title_column"><strong>Prezzo
+							Minimo</strong></td>
 					<td id="table_details_detail_column"><strong>#{ImmobileView.venditaSelezionata.prezzoMinimo}</strong></td>
 				</tr>
 				<tr>
@@ -59,60 +61,46 @@
 					<td id="table_details_detail_column"><strong>#{ImmobileView.offerteVenditaSelezionata()}</strong></td>
 				</tr>
 			</table>
+			<div class="offerte">Offerte</div>
 
-			<div id="new_offer">
-				<h:form>
-					<table id="immobile_table_details" class="immobile_table_details">
-						<tr>
-							<th colspan="2" id="table_details_header">Nuova offerta</th>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>Codice
-									Fiscale</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.codFisc}" id="codFisc" /></td>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>Cognome</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.cognome}" id="cognome" /></td>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>Nome</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.nome}" id="nome" /></td>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>N
-									Telefono</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.numTelefono}" id="numTelefono" /></td>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>Citta</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.citta}" id="citta" /></td>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>Prezzo
-									offerto</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.prezzoOfferto}" id="prezzoOfferto" /></td>
-						</tr>
-					</table>
-					<h:commandLink action="#{ImmobileView.submitContatto()}">
- 						<f:ajax
-							execute="codFisc cognome nome numTelefono citta prezzoOfferto"
-							render="result"/>
-						<div id="new_offer_submit_button">
-							<h:outputText value="#{msgs.new_offer_submit}" />
+			<h:form class="table_offerte">
+				<div class="table_row_head">
+					<div class="table_entry_offerte table_column_head_offerte">Nome</div>
+					<div class="table_entry_offerte table_column_head_offerte">Cognome</div>
+					<div class="table_entry_offerte table_column_head_offerte">Citta</div>
+					<div class="table_entry_offerte table_column_head_offerte">N Telefono</div>
+					<div class="table_entry_offerte table_column_head_offerte">Prezzo</div>
+					<div class="table_entry_offerte table_column_head_offerte">Data Offerta</div>
+				</div>
+				<div class="table">
+					<ui:repeat value="#{OfferteView.offerte}" var="O">
+						<div class="table_row">
+							<table style="width: 100%; padding: 5px; height:50px">
+								<tr>
+									<td>
+										<div class="table_entry_offerte">#{O.nomeAcq}</div>
+									</td>
+									<td>
+										<div class="table_entry_offerte">#{O.cognomeAcq}</div>
+									</td>
+									<td>
+										<div class="table_entry_offerte">#{O.citta}</div>
+									</td>
+									<td>
+										<div class="table_entry_offerte">#{O.numTelefono}</div>
+									</td>
+									<td>
+										<div class="table_entry_offerte">#{O.prezzo}</div>
+									</td>
+									<td>
+										<div class="table_entry_offerte">#{O.dataOfferta}</div>
+									</td>
+								</tr>
+							</table>
 						</div>
-					</h:commandLink>
-
-					<h:outputText id="result" value="#{ImmobileView.insertResult()}" />
-				</h:form>
-
-			</div>
+					</ui:repeat>
+				</div>
+			</h:form>
 
 		</ui:define>
 	</ui:composition>

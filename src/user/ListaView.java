@@ -27,9 +27,6 @@ public class ListaView implements Serializable {
 	private List<Vendita> listaVenditaSchiera;
 	private int nApp, nSin, nSch;
 	private Vendita venditaSelezionata;
-	private String username;
-	private String password;
-	private boolean loggedIn;
 	private int tipoScelto;
 
 	// === Methods
@@ -41,9 +38,7 @@ public class ListaView implements Serializable {
 		this.listaVenditaSingola = null;
 		this.listaVenditaSchiera = null;
 		this.venditaSelezionata = null;
-		username = null;
-		password = null;
-		loggedIn = false;
+
 	}
 
 	@PostConstruct
@@ -55,9 +50,6 @@ public class ListaView implements Serializable {
 		}
 	}
 
-	public boolean getCheck() {
-		return true;
-	}
 
 	public void aggiornaListaVendita(ComponentSystemEvent event) {
 		listaVendita = ds.getListaVendita();
@@ -89,21 +81,7 @@ public class ListaView implements Serializable {
 		listaVendita = ds.getListaVendita();
 	}
 
-	public String login() {
-		loggedIn = ds.login(username, password);
-		if (!loggedIn) {
-			username = null;
-			password = null;
-		}
-		return "index";
-	}
-
-	public String logout() {
-		username = null;
-		password = null;
-		loggedIn = false;
-		return "index";
-	}
+	
 
 	//public List<Vendita> getListaVendita() {
 	//	return listaVendita;
@@ -128,27 +106,6 @@ public class ListaView implements Serializable {
 
 	public int getnSch() {
 		return nSch;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public boolean getLoggedIn() {
-		System.out.println("loggedIn:" + loggedIn);
-		return loggedIn;
 	}
 	
 	public String TipoScelto(int i){
