@@ -51,11 +51,14 @@
 				</tr>
 				<tr>
 					<td id="table_details_title_column"><strong>Prezzo Minimo</strong></td>
-					<td id="table_details_detail_column"><strong>#{ImmobileView.venditaSelezionata.prezzoMinimo}</strong></td>
+					<td id="table_details_detail_column"><strong>#{ImmobileView.venditaSelezionata.prezzoMinimo}</strong>
+						<h:outputText id="table_details_detail_column" value="#{ImmobileView.venditaSelezionata.prezzoMinimo}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
+					</td>
 				</tr>
 				<tr>
-					<td id="table_details_title_column"><strong>Numero
-							offerte</strong></td>
+					<td id="table_details_title_column"><strong>Numero offerte</strong></td>
 					<td id="table_details_detail_column"><strong>#{ImmobileView.offerteVenditaSelezionata()}</strong></td>
 				</tr>
 			</table>
@@ -67,37 +70,59 @@
 							<th colspan="2" id="table_details_header">Nuova offerta</th>
 						</tr>
 						<tr>
-							<td id="table_details_title_column"><strong>Codice
-									Fiscale</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.codFisc}" id="codFisc" /></td>
+							<td id="table_details_title_column"><strong>Codice Fiscale</strong></td>
+							<td id="table_details_detail_column">
+								<h:inputText value="#{ImmobileView.codFisc}" id="codFisc"
+									required="true"
+									requiredMessage="Codice Fiscale obbligatorio"
+									validatorMessage="Codice Fiscale non valido" >
+									<f:validateLength minimum="16" />
+								</h:inputText>
+							</td>
 						</tr>
 						<tr>
 							<td id="table_details_title_column"><strong>Cognome</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.cognome}" id="cognome" /></td>
+							<td id="table_details_detail_column">
+								<h:inputText value="#{ImmobileView.cognome}" id="cognome" 
+									required="true"
+									requiredMessage="Cognome obbligatorio"/>
+							</td>
 						</tr>
 						<tr>
 							<td id="table_details_title_column"><strong>Nome</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.nome}" id="nome" /></td>
+							<td id="table_details_detail_column">
+								<h:inputText value="#{ImmobileView.nome}" id="nome"  
+									required="true"
+									requiredMessage="Nome obbligatorio"/>
+							</td>
 						</tr>
 						<tr>
-							<td id="table_details_title_column"><strong>N
-									Telefono</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.numTelefono}" id="numTelefono" /></td>
+							<td id="table_details_title_column"><strong>N Telefono</strong></td>
+							<td id="table_details_detail_column">
+								<h:inputText value="#{ImmobileView.numTelefono}" id="numTelefono"  
+									required="true"
+									requiredMessage="Numero di telefono obbligatorio"/>
+							</td>
 						</tr>
 						<tr>
 							<td id="table_details_title_column"><strong>Citta</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.citta}" id="citta" /></td>
+							<td id="table_details_detail_column">
+								<h:inputText value="#{ImmobileView.citta}" id="citta"  
+									required="true"
+									requiredMessage="Citta' obbligatoria">
+									</h:inputText>
+							</td>
 						</tr>
 						<tr>
-							<td id="table_details_title_column"><strong>Prezzo
-									offerto</strong></td>
-							<td id="table_details_detail_column"><h:inputText
-									value="#{ImmobileView.prezzoOfferto}" id="prezzoOfferto" /></td>
+							<td id="table_details_title_column"><strong>Prezzo offerto</strong></td>
+							<td id="table_details_detail_column">
+								<h:inputText value="#{ImmobileView.prezzoOfferto}" id="prezzoOfferto"  
+									required="true"
+									requiredMessage="Prezzo offerto obbligatorio"
+									converter="javax.faces.Double">
+									<f:validateRegex pattern="\d*.\d{2}"/>
+								</h:inputText>
+							</td>
 						</tr>
 					</table>
 					<h:commandLink action="#{ImmobileView.submitContatto()}">

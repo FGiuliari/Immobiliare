@@ -208,7 +208,7 @@ public class DataSource implements Serializable {
 			, String nome
 			, String numTelefono
 			, String citta
-			, float prezzoOfferta) {
+			, double prezzoOfferta) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -235,7 +235,7 @@ public class DataSource implements Serializable {
 			pstmt.setInt(1, codice_tentata_vendita);
 			pstmt.setString(2, codFisc);
 			pstmt.setDate(3, Date.valueOf(LocalDate.now()));
-			pstmt.setFloat(4, prezzoOfferta);
+			pstmt.setDouble(4, prezzoOfferta);
 			pstmt.execute();
 			
 			result = true;

@@ -17,7 +17,7 @@ public class ImmobileView {
 	private String nome;
 	private String numTelefono;
 	private String citta;
-	private String prezzoOfferto;
+	private double prezzoOfferto;
 	private Vendita currentVendita;
 	
 	private boolean insertResult;
@@ -52,8 +52,10 @@ public class ImmobileView {
 	public void submitContatto() {
 		System.out.println("INSERT RESULT " + codFisc + cognome + nome + numTelefono + citta);
 		if (codFisc != null && cognome != null && nome != null && numTelefono != null && citta != null) {
-			float offerta = Float.parseFloat(prezzoOfferto);
-			this.insertResult = ds.newContattoAcquirente(this.getVenditaSelezionata().getCodice(), codFisc, cognome, nome, numTelefono, citta, offerta);
+			//float offerta = Float.parseFloat(prezzoOfferto);
+			//this.insertResult = ds.newContattoAcquirente(this.getVenditaSelezionata().getCodice(), codFisc, cognome, nome, numTelefono, citta, offerta);
+			this.insertResult = ds.newContattoAcquirente(this.getVenditaSelezionata().getCodice(), codFisc, cognome, nome, numTelefono, citta, prezzoOfferto);
+			
 		}
 	}
 	
@@ -71,7 +73,9 @@ public class ImmobileView {
 		return numTelefono;
 	}
 
-	public String getPrezzoOfferto() {
+	public double getPrezzoOfferto() {
+		String s;
+		s=""+prezzoOfferto;
 		return prezzoOfferto;
 	}
 
@@ -87,7 +91,7 @@ public class ImmobileView {
 		this.numTelefono = numTelefono;
 	}
 
-	public void setPrezzoOfferto(String prezzoOfferto) {
+	public void setPrezzoOfferto(double prezzoOfferto) {
 		this.prezzoOfferto = prezzoOfferto;
 	}
 
