@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+
+	<ui:composition template="/templates/layout.jsf">
+
+		<ui:define name="windowTitle">
+  			Tipologia immobile
+  		</ui:define>
+
+		<ui:define name="content">
+			<f:metadata>
+				<f:viewParam id="id" name="idVendita"
+					value="#{immobileUtenteBean.idVendita}" required="true">
+				</f:viewParam>
+				<f:viewAction action="#{immobileUtenteBean.init}" />
+			</f:metadata>
+			<h:message for="id" />
+			<h:panelGroup display="block"
+				rendered="#{not empty immobileUtenteBean.vendita}">
+				<table class="immobile_table_details">
+					<tr>
+						<th colspan="2" id="table_details_header">Dettagli abitazione</th>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Codice</strong></td>
+						<td id="table_details_detail_column">#{immobileUtenteBean.vendita.codice}</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Indirizzo</strong></td>
+						<td id="table_details_detail_column">#{immobileUtenteBean.vendita.indirizzo}
+							euro</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Citta</strong></td>
+						<td id="table_details_detail_column">#{immobileUtenteBean.vendita.citta}</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Superficie
+								totale</strong></td>
+						<td id="table_details_detail_column">#{immobileUtenteBean.vendita.superficie}</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Numero
+								vani</strong></td>
+						<td id="table_details_detail_column">#{immobileUtenteBean.vendita.numero_vani}</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Descrizione</strong></td>
+						<td id="table_details_detail_column">#{immobileUtenteBean.vendita.descrizione}</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Prezzo
+								Minimo</strong></td>
+						<td id="table_details_detail_column"><strong>#{immobileUtenteBean.vendita.prezzoMinimo}</strong></td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Numero
+								offerte</strong></td>
+						<td id="table_details_detail_column"><strong>#{immobileUtenteBean.offerteVendita()}</strong></td>
+					</tr>
+				</table>
+				<div class="offerte">Offerte</div>
+				<h:form id="table_offerte">
+					<div class="table_row_head">
+						<div class="table_entry_offerte table_column_head_offerte">Nome</div>
+						<div class="table_entry_offerte table_column_head_offerte">Cognome</div>
+						<div class="table_entry_offerte table_column_head_offerte">Citta</div>
+						<div class="table_entry_offerte table_column_head_offerte">N
+							Telefono</div>
+						<div class="table_entry_offerte table_column_head_offerte">Prezzo</div>
+						<div class="table_entry_offerte table_column_head_offerte">Data
+							Offerta</div>
+					</div>
+					<div class="table">
+						<ui:repeat value="#{immobileUtenteBean.offerte}" var="O">
+							<div class="table_row">
+								<table style="width: 100%; padding: 5px; height: 50px">
+									<tr>
+										<td>
+											<div class="table_entry_offerte">#{O.nomeAcq}</div>
+										</td>
+										<td>
+											<div class="table_entry_offerte">#{O.cognomeAcq}</div>
+										</td>
+										<td>
+											<div class="table_entry_offerte">#{O.citta}</div>
+										</td>
+										<td>
+											<div class="table_entry_offerte">#{O.numTelefono}</div>
+										</td>
+										<td>
+											<div class="table_entry_offerte">#{O.prezzo}</div>
+										</td>
+										<td>
+											<div class="table_entry_offerte">#{O.dataOfferta}</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</ui:repeat>
+					</div>
+				</h:form>
+			</h:panelGroup>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

@@ -3,23 +3,16 @@ import database.*;
 
 public class StateTracker {
 	
-	
-	private static StateTracker instance;
-	
+		
 	private Vendita current_tentata_vendita;
 	private User user;
 	
-	private StateTracker(){
+	public StateTracker(){
 		this.current_tentata_vendita = null;
 		this.user=null;
 		
 	}
-	
-	public static StateTracker getStateTracker(){
-		if (instance == null) instance = new StateTracker();
-		return instance;
-	}
-	
+
 	public Vendita getCurrent_tentata_vendita() {
 		return current_tentata_vendita;
 	}

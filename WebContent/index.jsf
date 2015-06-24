@@ -17,31 +17,34 @@
 		<ui:define name="content">
 			<div id='TypeMenu'>
 				<h:form>
-					<f:event listener="#{View.aggiornaListaVendita}"
+					<f:event listener="#{listaVenditaBean.aggiornaListaVendita}"
 						type="preRenderView" />
 
-					<h:commandLink action="#{View.TipoScelto(1)}">
+					<h:link outcome="tentativi_vendita.jsf" >
+						<f:param name="tipoScelto" value="palazzina" />
 						<div class="boxA mpTypeButton">
 							<div class="mpTypeButtonText">
-								<h:outputText value="#{msgs.palazzina} #{View.nApp}" />
+								<h:outputText value="#{msgs.palazzina} #{listaVenditaBean.nPal}" />
 							</div>
 						</div>
-					</h:commandLink>
-					<h:commandLink action="#{View.TipoScelto(2)}">
+					</h:link>
+					<h:link outcome="tentativi_vendita.jsf" >
+						<f:param name="tipoScelto" value="schiera" />
 						<div class="boxB mpTypeButton">
 							<div class="mpTypeButtonText">
-								<h:outputText value="#{msgs.vill_schiera} #{View.nSch}" />
+								<h:outputText value="#{msgs.vill_schiera} #{listaVenditaBean.nSch}" />
 							</div>
 
 						</div>
-					</h:commandLink>
-					<h:commandLink action="#{View.TipoScelto(3)}">
+					</h:link>
+					<h:link outcome="tentativi_vendita.jsf" >
+						<f:param name="tipoScelto" value="singola" />						
 						<div class="boxC mpTypeButton">
 							<div class="mpTypeButtonText">
-								<h:outputText value="#{msgs.vill_singola} #{View.nSin}" />
+								<h:outputText value="#{msgs.vill_singola} #{listaVenditaBean.nSin}" />
 							</div>
 						</div>
-					</h:commandLink>
+					</h:link>
 				</h:form>
 			</div>
 			<div class="clear" />

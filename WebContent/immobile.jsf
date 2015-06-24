@@ -10,135 +10,136 @@
 <title>IGNORED</title>
 </head>
 <body>
-	
+
 	<ui:composition template="/templates/layout.jsf">
-	
+
 		<ui:define name="windowTitle">
   			Tipologia immobile
   		</ui:define>
 
 		<ui:define name="content">
-		
-			<table class="immobile_table_details">
-				<tr>
-					<th colspan="2" id="table_details_header">Dettagli abitazione</th>
-				</tr>
-				<tr>
-					<td id="table_details_title_column"><strong>Codice</strong></td>
-					<td id="table_details_detail_column">#{ImmobileView.venditaSelezionata.codice}</td>
-				</tr>
-				<tr>
-					<td id="table_details_title_column"><strong>Indirizzo</strong></td>
-					<td id="table_details_detail_column">#{ImmobileView.venditaSelezionata.indirizzo} euro</td>
-				</tr>
-				<tr>
-					<td id="table_details_title_column"><strong>Citta</strong></td>
-					<td id="table_details_detail_column">#{ImmobileView.venditaSelezionata.citta}</td>
-				</tr>
-				<tr>
-					<td id="table_details_title_column"><strong>Superficie
-							totale</strong></td>
-					<td id="table_details_detail_column">#{ImmobileView.venditaSelezionata.superficie}</td>
-				</tr>
-				<tr>
-					<td id="table_details_title_column"><strong>Numero
-							vani</strong></td>
-					<td id="table_details_detail_column">#{ImmobileView.venditaSelezionata.numero_vani}</td>
-				</tr>
-				<tr>
-					<td id="table_details_title_column"><strong>Descrizione</strong></td>
-					<td id="table_details_detail_column">#{ImmobileView.venditaSelezionata.descrizione}</td>
-				</tr>
-				<tr>
-					<td id="table_details_title_column"><strong>Prezzo Minimo</strong></td>
-					<td id="table_details_detail_column"><strong>#{ImmobileView.venditaSelezionata.prezzoMinimo}</strong>
-						<h:outputText id="table_details_detail_column" value="#{ImmobileView.venditaSelezionata.prezzoMinimo}">
-							<f:convertNumber type="currency" />
-						</h:outputText>
-					</td>
-				</tr>
-				<tr>
-					<td id="table_details_title_column"><strong>Numero offerte</strong></td>
-					<td id="table_details_detail_column"><strong>#{ImmobileView.offerteVenditaSelezionata()}</strong></td>
-				</tr>
-			</table>
+			<f:metadata>
+				<f:viewParam id="id" name="idVendita"
+					value="#{immobileBean.idVendita}" required="true">
+				</f:viewParam>
+				<f:viewAction action="#{immobileBean.init}" />
+			</f:metadata>
+			<h:message for="id" />
+			<h:panelGroup display="block"
+				rendered="#{not empty immobileBean.vendita}">
+				<table class="immobile_table_details">
+					<tr>
+						<th colspan="2" id="table_details_header">Dettagli abitazione</th>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Codice</strong></td>
+						<td id="table_details_detail_column">#{immobileBean.vendita.codice}</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Indirizzo</strong></td>
+						<td id="table_details_detail_column">#{immobileBean.vendita.indirizzo}
+							euro</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Citta</strong></td>
+						<td id="table_details_detail_column">#{immobileBean.vendita.citta}</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Superficie
+								totale</strong></td>
+						<td id="table_details_detail_column">#{immobileBean.vendita.superficie}</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Numero
+								vani</strong></td>
+						<td id="table_details_detail_column">#{immobileBean.vendita.numero_vani}</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Descrizione</strong></td>
+						<td id="table_details_detail_column">#{immobileBean.vendita.descrizione}</td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Prezzo
+								Minimo</strong></td>
+						<td id="table_details_detail_column"><strong>#{immobileBean.vendita.prezzoMinimo}</strong>
+							<h:outputText id="table_details_detail_column"
+								value="#{immobileBean.vendita.prezzoMinimo}">
+								<f:convertNumber type="currency" />
+							</h:outputText></td>
+					</tr>
+					<tr>
+						<td id="table_details_title_column"><strong>Numero
+								offerte</strong></td>
+						<td id="table_details_detail_column"><strong>#{immobileBean.offerteVendita()}</strong></td>
+					</tr>
+				</table>
 
-			<div id="new_offer">
-				<h:form>
-					<table id="immobile_table_details" class="immobile_table_details">
-						<tr>
-							<th colspan="2" id="table_details_header">Nuova offerta</th>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>Codice Fiscale</strong></td>
-							<td id="table_details_detail_column">
-								<h:inputText value="#{ImmobileView.codFisc}" id="codFisc"
-									required="true"
-									requiredMessage="Codice Fiscale obbligatorio"
-									validatorMessage="Codice Fiscale non valido" >
-									<f:validateLength minimum="16" />
-								</h:inputText>
-							</td>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>Cognome</strong></td>
-							<td id="table_details_detail_column">
-								<h:inputText value="#{ImmobileView.cognome}" id="cognome" 
-									required="true"
-									requiredMessage="Cognome obbligatorio"/>
-							</td>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>Nome</strong></td>
-							<td id="table_details_detail_column">
-								<h:inputText value="#{ImmobileView.nome}" id="nome"  
-									required="true"
-									requiredMessage="Nome obbligatorio"/>
-							</td>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>N Telefono</strong></td>
-							<td id="table_details_detail_column">
-								<h:inputText value="#{ImmobileView.numTelefono}" id="numTelefono"  
-									required="true"
-									requiredMessage="Numero di telefono obbligatorio"/>
-							</td>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>Citta</strong></td>
-							<td id="table_details_detail_column">
-								<h:inputText value="#{ImmobileView.citta}" id="citta"  
-									required="true"
-									requiredMessage="Citta' obbligatoria">
-									</h:inputText>
-							</td>
-						</tr>
-						<tr>
-							<td id="table_details_title_column"><strong>Prezzo offerto</strong></td>
-							<td id="table_details_detail_column">
-								<h:inputText value="#{ImmobileView.prezzoOfferto}" id="prezzoOfferto"  
-									required="true"
-									requiredMessage="Prezzo offerto obbligatorio"
-									converter="javax.faces.Double">
-									<f:validateRegex pattern="\d*.\d{2}"/>
-								</h:inputText>
-							</td>
-						</tr>
-					</table>
-					<h:commandLink action="#{ImmobileView.submitContatto()}">
- 						<f:ajax
-							execute="codFisc cognome nome numTelefono citta prezzoOfferto"
-							render="result"/>
-						<div id="new_offer_submit_button">
-							<h:outputText value="#{msgs.new_offer_submit}" />
-						</div>
-					</h:commandLink>
+				<div id="new_offer">
+					<h:form>
+						<table id="immobile_table_details" class="immobile_table_details">
+							<tr>
+								<th colspan="2" id="table_details_header">Nuova offerta</th>
+							</tr>
+							<tr>
+								<td id="table_details_title_column"><strong>Codice
+										Fiscale</strong></td>
+								<td id="table_details_detail_column"><h:inputText
+										value="#{immobileBean.codFisc}" id="codFisc" required="true"
+										requiredMessage="Codice Fiscale obbligatorio"
+										validatorMessage="Codice Fiscale non valido">
+										<f:validateLength minimum="16" />
+									</h:inputText></td>
+							</tr>
+							<tr>
+								<td id="table_details_title_column"><strong>Cognome</strong></td>
+								<td id="table_details_detail_column"><h:inputText
+										value="#{immobileBean.cognome}" id="cognome" required="true"
+										requiredMessage="Cognome obbligatorio" /></td>
+							</tr>
+							<tr>
+								<td id="table_details_title_column"><strong>Nome</strong></td>
+								<td id="table_details_detail_column"><h:inputText
+										value="#{immobileBean.nome}" id="nome" required="true"
+										requiredMessage="Nome obbligatorio" /></td>
+							</tr>
+							<tr>
+								<td id="table_details_title_column"><strong>N
+										Telefono</strong></td>
+								<td id="table_details_detail_column"><h:inputText
+										value="#{immobileBean.numTelefono}" id="numTelefono"
+										required="true"
+										requiredMessage="Numero di telefono obbligatorio" /></td>
+							</tr>
+							<tr>
+								<td id="table_details_title_column"><strong>Citta</strong></td>
+								<td id="table_details_detail_column"><h:inputText
+										value="#{immobileBean.citta}" id="citta" required="true"
+										requiredMessage="Citta' obbligatoria">
+									</h:inputText></td>
+							</tr>
+							<tr>
+								<td id="table_details_title_column"><strong>Prezzo
+										offerto</strong></td>
+								<td id="table_details_detail_column"><h:inputText
+										value="#{immobileBean.prezzoOfferto}" id="prezzoOfferto"
+										required="true" requiredMessage="Prezzo offerto obbligatorio"
+										converter="javax.faces.Double">
+									</h:inputText></td>
+							</tr>
+						</table>
+						<h:commandLink action="#{immobileBean.submitContatto()}">
+							<f:ajax
+								execute="codFisc cognome nome numTelefono citta prezzoOfferto"
+								render="result"/>
+							<div id="new_offer_submit_button">
+								<h:outputText value="#{msgs.new_offer_submit}" />
+							</div>
+						</h:commandLink>
+						<h:outputText id="result" value="#{immobileBean.esitoQuery}" />
+					</h:form>
 
-					<h:outputText id="result" value="#{ImmobileView.insertResult()}" />
-				</h:form>
-
-			</div>
-
+				</div>
+			</h:panelGroup>
 		</ui:define>
 	</ui:composition>
 </body>

@@ -14,8 +14,14 @@
 		<ui:define name="windowTitle">
     #{msgs.jupiter}
   </ui:define>
-
 		<ui:define name="content">
+			<f:metadata>
+				<f:viewParam id="id" name="tipoScelto"
+					value="#{tipoListaVenditaBean.tipo}" required="true">
+				</f:viewParam>
+				<f:viewAction action="#{tipoListaVenditaBean.init}" />
+			</f:metadata>
+			<h:message for="id" />
 			<h:form>
 				<div class="table_row_head">
 					<div class="table_entry table_column_head">Codice</div>
@@ -24,33 +30,32 @@
 					<div class="table_entry table_column_head">Superficie</div>
 				</div>
 				<div class="table">
-				<ui:repeat value="#{View.listaVendita}" var="V">
-					<div class="table_row">
-						<table style="width: 100%; padding: 5px">
-							<tr>
-								<td>
-									<div class="table_entry">#{V.codice}</div>
-								</td>
-								<td>
-									<div class="table_entry">#{V.indirizzo}</div>
-								</td>
-								<td>
-									<div class="table_entry">#{V.citta}</div>
-								</td>
-								<td>
-									<div class="table_entry">#{V.superficie}</div>
-								</td>
-								<td><h:commandLink
-										action="#{View.VenditaSelezionata(V.codice,false)}"
-										style="text-decoration: none;">
-										<div id="loginButton" class="redButton">
-											<h:outputText value="#{msgs.view}" />
-										</div>
-									</h:commandLink></td>
-							</tr>
-						</table>
-					</div>
-				</ui:repeat>
+					<ui:repeat value="#{tipoListaVenditaBean.listaTipo}" var="V">
+						<div class="table_row">
+							<table style="width: 100%; padding: 5px">
+								<tr>
+									<td>
+										<div class="table_entry">#{V.codice}</div>
+									</td>
+									<td>
+										<div class="table_entry">#{V.indirizzo}</div>
+									</td>
+									<td>
+										<div class="table_entry">#{V.citta}</div>
+									</td>
+									<td>
+										<div class="table_entry">#{V.superficie}</div>
+									</td>
+									<td><h:link outcome="immobile.jsf">
+											<f:param name="idVendita" value="#{V.codice}" />
+											<div id="loginButton" class="redButton">
+												<h:outputText value="#{msgs.view}" />
+											</div>
+										</h:link></td>
+								</tr>
+							</table>
+						</div>
+					</ui:repeat>
 				</div>
 				<!-- 
 					<h:dataTable value="#{View.listaVendita}" var="V"

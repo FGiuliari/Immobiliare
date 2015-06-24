@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+>
 
 <h:head>
 	<title><ui:insert name="windowTitle" /></title>
@@ -16,50 +17,9 @@
 			<div id="logo">
 				<h:form>
 					<h1>
-						<h:commandLink action="index" value="#{msgs.AgencyName}" />
+						<h:link outcome="/index.jsf" value="#{msgs.AgencyName}" />
 					</h1>
 				</h:form>
-			</div>
-			<div id="login">
-				<h:panelGroup layout="block" rendered="#{!User.loggedIn}">
-					<h:form>
-						<table>
-							<tr>
-								<td>Username:</td>
-								<td><h:inputText class="loginTextInput"
-										value="#{User.username}" /></td>
-								<td class="emptyRow" />
-								<td>Password:</td>
-								<td><h:inputSecret class="loginTextInput"
-										value="#{User.password}" /></td>
-								<td class="emptyRow" />
-								<td><h:commandLink action="#{User.login}"
-										style="text-decoration: none">
-										<div id="loginButton" class="redButton">
-											<h:outputText value="#{msgs.login}" />
-										</div>
-									</h:commandLink></td>
-							</tr>
-						</table>
-					</h:form>
-				</h:panelGroup>
-				<h:panelGroup layout="block" rendered="#{User.loggedIn}">
-					<h:form>
-						<table>
-							<tr>
-								<td>Welcome,</td>
-								<td><h:outputText value="#{User.username}" /></td>
-								<td class="emptyRow" />
-								<td><h:commandLink action="#{User.logout}"
-										style="text-decoration: none">
-										<div id="loginButton" class="redButton">
-											<h:outputText value="#{msgs.logout}" />
-										</div>
-									</h:commandLink></td>
-							</tr>
-						</table>
-					</h:form>
-				</h:panelGroup>
 			</div>
 			<div id="menu">
 				<ui:insert name="menu">

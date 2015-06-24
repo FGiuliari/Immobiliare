@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Realm className="org.apache.catalina.realm.JAASRealm" appName="immobiliare"
+		userClassNames="login.UserPrincipal"
+		roleClassNames="login.RolePrincipal" />
+
+		 <Manager className="org.apache.catalina.session.PersistentManager"
+      debug="0" distributable="false" saveOnRestart="false">
+        <Store className="org.apache.catalina.session.FileStore"/>
+    </Manager>
+</Context>
+

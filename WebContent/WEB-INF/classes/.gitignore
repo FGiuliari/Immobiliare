@@ -1,3 +1,5 @@
-/.DS_Store
 /database/
-/user/
+/login/
+/controller/
+/controllerGuest/
+/controllerUtenteRegistrato/
