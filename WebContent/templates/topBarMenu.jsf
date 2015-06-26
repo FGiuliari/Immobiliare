@@ -11,7 +11,7 @@
 	<ui:composition>
 		<h:form>
 			<ul>
-				<li><h:commandLink action="offerte" value="Vedi offerte" rendered="#{User.loggedIn}"/></li>
+				<li><h:link outcome="/utente/offerte.jsf" value="Zona Utente"/></li>
 				
 			</ul>
 		</h:form>

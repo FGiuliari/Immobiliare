@@ -222,7 +222,7 @@ ul.contact li a.icon-rss::before {
   text-decoration: none;
   text-transform: uppercase;
 }
-#menu li:hover a {
+#menu li a{
   background: #CC0000 none repeat scroll 0 0;
   border-radius: 5px;
 }

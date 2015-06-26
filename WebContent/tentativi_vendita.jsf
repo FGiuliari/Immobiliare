@@ -15,6 +15,7 @@
     #{msgs.jupiter}
   </ui:define>
 		<ui:define name="content">
+		
 			<f:metadata>
 				<f:viewParam id="id" name="tipoScelto"
 					value="#{tipoListaVenditaBean.tipo}" required="true">
@@ -22,6 +23,7 @@
 				<f:viewAction action="#{tipoListaVenditaBean.init}" />
 			</f:metadata>
 			<h:message for="id" />
+			
 			<h:form>
 				<div class="table_row_head">
 					<div class="table_entry table_column_head">Codice</div>
