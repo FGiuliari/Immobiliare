@@ -22,6 +22,11 @@ public class SecurityBacking implements Serializable {
 		return "/client/index.jsf?faces-redirect=true";
 	}
 
+	public boolean isLoggedIn(){
+		if(((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getUserPrincipal()!=null)
+			return true;
+		return false;
+	}
 	public String getUsername() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context
