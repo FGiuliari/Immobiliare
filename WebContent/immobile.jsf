@@ -37,8 +37,7 @@
 					</tr>
 					<tr>
 						<td id="table_details_title_column"><strong>Indirizzo</strong></td>
-						<td id="table_details_detail_column">#{immobileBean.vendita.indirizzo}
-							euro</td>
+						<td id="table_details_detail_column">#{immobileBean.vendita.indirizzo}</td>
 					</tr>
 					<tr>
 						<td id="table_details_title_column"><strong>Citta</strong></td>
@@ -61,11 +60,13 @@
 					<tr>
 						<td id="table_details_title_column"><strong>Prezzo
 								Minimo</strong></td>
-						<td id="table_details_detail_column"><strong>#{immobileBean.vendita.prezzoMinimo}</strong>
-							<h:outputText id="table_details_detail_column"
-								value="#{immobileBean.vendita.prezzoMinimo}">
-								<f:convertNumber type="currency" />
-							</h:outputText></td>
+						<td id="table_details_detail_column">
+							<strong>
+								<h:outputText value="#{immobileBean.vendita.prezzoMinimo}">
+									<f:convertNumber type="currency" currencySymbol="€" locale="it_IT"/>
+								</h:outputText>
+							</strong>
+						</td>
 					</tr>
 					<tr>
 						<td id="table_details_title_column"><strong>Numero

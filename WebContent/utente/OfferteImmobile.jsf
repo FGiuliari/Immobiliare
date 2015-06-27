@@ -61,7 +61,9 @@
 					<tr>
 						<td id="table_details_title_column"><strong>Prezzo
 								Minimo</strong></td>
-						<td id="table_details_detail_column"><strong>#{immobileUtenteBean.vendita.prezzoMinimo}</strong></td>
+						<td id="table_details_detail_column"><strong><h:outputText value="#{immobileUtenteBean.vendita.prezzoMinimo}">
+									<f:convertNumber type="currency" currencySymbol="€" locale="it_IT"/>
+								</h:outputText></strong></td>
 					</tr>
 					<tr>
 						<td id="table_details_title_column"><strong>Numero
@@ -99,7 +101,11 @@
 											<div class="table_entry_offerte">#{O.numTelefono}</div>
 										</td>
 										<td>
-											<div class="table_entry_offerte">#{O.prezzo}</div>
+											<div class="table_entry_offerte">
+												<h:outputText value="#{O.prezzo}">
+													<f:convertNumber type="currency" currencySymbol="€" locale="it_IT"/>
+												</h:outputText>
+											</div>
 										</td>
 										<td>
 											<div class="table_entry_offerte">#{O.dataOfferta}</div>

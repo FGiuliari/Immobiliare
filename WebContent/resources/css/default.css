@@ -212,6 +212,7 @@ ul.contact li a.icon-rss::before {
   display: block;
   float: left;
   text-align: center;
+  padding-left: 20px;
 }
 #menu li a, #menu li span {
   color: #fff;
